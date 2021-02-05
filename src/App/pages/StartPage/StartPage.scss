@@ -1,0 +1,21 @@
+.startPage {
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.67);
+
+  &__logo {
+    padding: 32px 93px 0;
+  }
+
+  &__body {
+    margin: 70px auto 0;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: max-content;
+  }
+}
+
+.mt-15 {
+  margin-top: 30px;
+}
