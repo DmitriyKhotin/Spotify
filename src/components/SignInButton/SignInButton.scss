@@ -1,0 +1,18 @@
+@import "variables";
+@import "./src/styles/mixins";
+
+.signInButton {
+  @include button;
+  width: 401px;
+  height: 65px;
+  text-align: center;
+  padding: 16px 0;
+  border-radius: 32px;
+  background-color: $logo-color;
+
+  &__title {
+    font-size: 28px;
+    line-height: 33px;
+    color: $startPageText-color;
+  }
+}

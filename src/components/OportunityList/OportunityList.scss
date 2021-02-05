@@ -1,0 +1,34 @@
+@import "variables";
+@import "./src/styles/mixins";
+
+.oportunities {
+  color: $startPageText-color;
+
+  &__title {
+    font-size: 42px;
+    font-weight: normal;
+    margin: 0;
+    line-height: 49px;
+  }
+
+  &__body {
+    margin-top: 8px;
+  }
+}
+
+.list {
+  list-style: none;
+
+  &__elem {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    line-height: 30px;
+    margin-bottom: 8px;
+  }
+
+  &__elem:before {
+    @include dot(7px, $startPageText-color);
+    margin-right: 8px;
+  }
+}

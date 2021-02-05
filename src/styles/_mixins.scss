@@ -1,0 +1,21 @@
+@mixin dot($diametr, $color) {
+  content: "";
+  display: block;
+  height: $diametr;
+  width: $diametr;
+  background-color: $color;
+  border-radius: 50%;
+}
+
+@mixin button() {
+
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
