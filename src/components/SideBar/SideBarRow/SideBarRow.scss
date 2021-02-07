@@ -1,0 +1,17 @@
+@import "src/styles/variables";
+
+.sideBarRow {
+  margin-bottom: 16px;
+
+  &__icon {
+    height: 24px;
+    width: 24px;
+    margin-right: 20px;
+  }
+
+  &__title {
+    color: $sideBarRow-color;
+    font-size: 19px;
+    line-height: 22px;
+  }
+}
