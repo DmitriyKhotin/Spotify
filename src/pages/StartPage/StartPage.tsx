@@ -1,7 +1,7 @@
 import React, {FC, Fragment} from 'react'
 import BigLogo from '@components/BigLogo'
 import OportunityList from '@components/OportunityList'
-import SignInButton from "../../../components/SignInButton";
+import SignInButton from "../../components/SignInButton";
 import './StartPage.scss'
 
 const StartPage: FC = () => {
