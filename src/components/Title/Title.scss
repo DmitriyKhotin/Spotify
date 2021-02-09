@@ -1,0 +1,8 @@
+@import "src/styles/variables";
+
+.title {
+  font-size: 25px;
+  line-height: $title-height;
+  color: $menu-color;
+  margin-bottom: $title-mb;
+}

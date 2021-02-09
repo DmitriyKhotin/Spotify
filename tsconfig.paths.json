@@ -5,9 +5,10 @@
       "@components/*": ["src/components/*"],
       "@store/*": ["src/store/*"],
       "@utils/*": ["src/utils/*"],
-      "@styles/*": ["src/styles/*"],
       "@config/*": ["src/config/*"],
-      "@public/*": ["public/*"]
+      "@styles/*": ["src/styles/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@pages/*": ["src/pages/*"]
     }
   }
 }

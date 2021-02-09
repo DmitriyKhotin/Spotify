@@ -1,0 +1,7 @@
+@import "src/styles/mixins";
+
+.card {
+  @include square(180px);
+  background-color: white;
+  margin-right: 10px;
+}

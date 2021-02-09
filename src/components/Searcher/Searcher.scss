@@ -1,0 +1,50 @@
+@import "src/styles/mixins";
+@import "src/styles/variables";
+
+.searcher {
+  position: relative;
+  height: 50px;
+  width: 330px;
+  background-color: $searcher-bcg-color;
+  border-radius: 34px;
+  border: none;
+  padding: 13px 28px;
+
+  &__input {
+    background-color: $searcher-bcg-color;
+    height: 23px;
+    border: none;
+    font-size: 18px;
+    line-height: 100%;
+    width: 100%;
+    padding-right: 26px;
+
+    &::placeholder {
+      color: $searcher-placeholder-color;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__label{
+    @include icon_centre;
+    @include square(23px);
+    position: absolute;
+    right: 23px;
+    border: none;
+  }
+}
+
+.loupe {
+  background-image: url("img/searcher.png");
+}
+
+.cross {
+  background-image: url("img/cross.png");
+
+  &:focus {
+    outline: none;
+  }
+}
