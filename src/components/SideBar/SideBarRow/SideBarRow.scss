@@ -1,11 +1,19 @@
 @import "src/styles/variables";
+@import "src/styles/mixins";
 
 .sideBarRow {
   margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+    opacity: .8;
+  }
 
   &__icon {
-    height: 24px;
-    width: 24px;
+    @include icon_centre;
+    @include square(24px);
     margin-right: 20px;
   }
 

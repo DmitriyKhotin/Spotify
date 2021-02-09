@@ -19,3 +19,14 @@
     outline: none;
   }
 }
+
+@mixin square($side) {
+  height: $side;
+  width: $side;
+}
+
+@mixin icon_centre() {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}

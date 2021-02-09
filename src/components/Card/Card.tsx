@@ -1,9 +1,9 @@
 import React, {FC} from 'react'
-import './BigLogo.scss'
+import './Card.scss'
 
 const Card: FC = () => {
   return (
-    <button className="card"/>
+    <div className="card"/>
   )
 }
 

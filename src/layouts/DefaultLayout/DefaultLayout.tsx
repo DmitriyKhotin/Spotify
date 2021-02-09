@@ -4,8 +4,9 @@ import Carousel from '@components/Carousel'
 
 const DefaultLayout: FC = () => {
   return (
-    <div>
+    <div className="defaultLayout">
       <Carousel title="My albums"/>
+      <Carousel title="My playlists"/>
     </div>
   )
 }

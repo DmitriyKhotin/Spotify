@@ -3,7 +3,7 @@ import './Searcher.scss'
 
 const Searcher: FC = () => {
   const [value, setValue] = useState<string>('')
-  const inputRef = useRef<null | HTMLInputElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const clearInput = () => {
     setValue('')

@@ -3,6 +3,7 @@ import Searcher from '@components/Searcher'
 import SideBar from '@components/SideBar'
 import ProfileBar from '@components/ProfileBar'
 import MiniLogo from '@components/MiniLogo'
+import DefaultLayout from '@layouts/DefaultLayout'
 import './MainPage.scss'
 
 const MainPage: FC = () => {
@@ -21,6 +22,7 @@ const MainPage: FC = () => {
       <div className="main">
         <SideBar/>
         <div className="main__delimiter"/>
+        <DefaultLayout/>
       </div>
     </>
   );

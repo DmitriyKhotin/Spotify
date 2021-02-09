@@ -2,7 +2,7 @@
 
 .title {
   font-size: 25px;
-  line-height: 29px;
+  line-height: $title-height;
   color: $menu-color;
-  margin-bottom: 19px;
+  margin-bottom: $title-mb;
 }
