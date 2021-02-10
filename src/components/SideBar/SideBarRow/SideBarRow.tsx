@@ -6,7 +6,7 @@ const SideBarRow: FC<SideBarLabel> = ({title, img}) => {
 
 
   return (
-    <div className="sideBarRow">
+    <div className="sideBarRow" onClick={() => alert('hi')}>
       <img src={img} className="sideBarRow__icon" alt={title.toLowerCase()}/>
       <span className="sideBarRow__title">{ title }</span>
     </div>

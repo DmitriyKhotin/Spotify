@@ -1,10 +1,18 @@
-import React, {FC, Fragment} from 'react'
+import React, {FC, useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
 import BigLogo from '@components/BigLogo'
 import OportunityList from '@components/OportunityList'
-import SignInButton from "../../components/SignInButton";
+import SignInButton from '@components/SignInButton'
 import './StartPage.scss'
 
 const StartPage: FC = () => {
+  const history = useHistory<History>()
+
+  useEffect(() => {
+    if (localStorage.getItem('token'))
+      history.replace('/')
+  }, [])
+
   return (
     <div className="startPage">
       <div className="startPage__logo">

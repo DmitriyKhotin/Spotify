@@ -1,7 +1,69 @@
 @import "src/styles/variables";
+@import "src/styles/mixins";
 
 .profileBar {
-  font-size: 34px;
-  line-height: 40px;
-  color: $menu-color;
+
+  &__title {
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    background: none;
+    padding: 4px 6px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      opacity: .8;
+      cursor: pointer;
+    }
+  }
+
+  .active {
+    opacity: .8;
+    cursor: pointer;
+  }
+
+  &__name {
+    font-size: 34px;
+    line-height: 40px;
+    color: $menu-color;
+    margin-right: 10px;
+  }
+
+  .arrow-bottom {
+    @include square(20px);
+    @include icon_centre;
+    background: url("img/arrow-bottom.svg");
+  }
+
+  .arrow-top {
+    @extend .arrow-bottom;
+    transform: rotate(180deg);
+  }
+
+  .dropdown-list {
+    position: absolute;
+    list-style: none;
+    width: 150px;
+    margin-top: 10px;
+    border: none;
+    background-color: $searcher-placeholder-color;
+    border-radius: 4px;
+
+    &__item {
+      padding: 10px 5px;
+      font-size: 16px;
+      line-height: 1;
+      color: $menu-color;
+
+      &:last-child {
+        border-top: 1px solid $menu-color;
+      }
+
+      &:hover {
+        opacity: .8;
+        cursor: pointer;
+      }
+    }
+  }
 }

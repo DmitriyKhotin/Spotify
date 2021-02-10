@@ -1,13 +1,15 @@
 import React, {FC, memo} from 'react'
+import { useHistory } from 'react-router-dom'
 import './SignInButton.scss'
-import {token_href} from "@config/appData";
+import {signIn_href} from "@config/appData";
 
 
 const SignInButton: FC = () => {
+  const history = useHistory<History>()
 
   const logIn = () => {
-    window.location.href = token_href
-    // window.history.replaceState(null, 'Spotify Mini', '/')
+    // history.push(signIn_href)
+    window.location.href = signIn_href
   }
 
   return (

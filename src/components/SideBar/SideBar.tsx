@@ -6,7 +6,6 @@ import {mapSideBarLabels, sideBarLabelOrder} from "./config";
 
 const SideBar: FC = () => {
 
-  console.log(sideBarLabelOrder)
   return (
     <div className="sideBar">
       <Title title="My top"/>
