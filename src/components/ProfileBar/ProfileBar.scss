@@ -34,11 +34,13 @@
     @include square(20px);
     @include icon_centre;
     background: url("img/arrow-bottom.svg");
+    transition: ease-out 0.2s;
   }
 
   .arrow-top {
     @extend .arrow-bottom;
     transform: rotate(180deg);
+
   }
 
   .dropdown-list {

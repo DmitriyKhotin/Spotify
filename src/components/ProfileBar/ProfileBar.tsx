@@ -1,15 +1,17 @@
 import React, {FC, useState} from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import './ProfileBar.scss'
+import {Paths} from "@config/routes";
 
 const ProfileBar: FC = () => {
   const [active, setActive] = useState<Boolean>(false)
   const history = useHistory<History>()
 
   const signOut = (): void => {
-    localStorage.setItem('token', '')
+    localStorage.removeItem('token')
     history.push('/login')
   }
+
   return (
     <div className="profileBar" onBlur={() => setActive(false)}>
       <button

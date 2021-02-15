@@ -1,6 +1,5 @@
 import {ProfileModel} from "./profile";
 import {ImagesApiModel} from "../imagesApi";
-import {normalizeBaseModel} from "../extends";
 
 export type ProfileApiModel = {
   id: string

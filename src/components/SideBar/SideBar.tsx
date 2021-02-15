@@ -1,8 +1,8 @@
-import React, {FC} from 'react'
+import React, {FC, useEffect} from 'react'
 import './SideBar.scss'
 import Title from "@components/Title";
 import SideBarRow from "./SideBarRow";
-import {mapSideBarLabels, sideBarLabelOrder} from "./config";
+import {mapSideBarLabels, SideBarEnum} from "./config";
 
 const SideBar: FC = () => {
 
@@ -10,13 +10,16 @@ const SideBar: FC = () => {
     <div className="sideBar">
       <Title title="My top"/>
       <div>
-        {sideBarLabelOrder.map(value =>
-          <SideBarRow
-            key={mapSideBarLabels[value].title}
-            title={mapSideBarLabels[value].title}
-            img={mapSideBarLabels[value].img}
-          />)
-        }
+        <SideBarRow
+          img={mapSideBarLabels[SideBarEnum.tracks].img}
+          title={mapSideBarLabels[SideBarEnum.tracks].title}
+          link={mapSideBarLabels[SideBarEnum.tracks].link}
+        />
+        <SideBarRow
+          img={mapSideBarLabels[SideBarEnum.artists].img}
+          title={mapSideBarLabels[SideBarEnum.artists].title}
+          link={mapSideBarLabels[SideBarEnum.artists].link}
+        />
       </div>
     </div>
   )

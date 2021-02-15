@@ -1,6 +1,6 @@
 import {TrackModel} from "./track";
 import {BaseApiModel, normalizeBaseModel} from "../extends";
-import {ArtistApiModel, normalizeArtistModel} from "../artists";
+import {ArtistApiModel, normalizeArtistsModel} from "../artists";
 
 export type TrackApiModel = BaseApiModel & {
   preview_url: string | null
@@ -13,7 +13,7 @@ export const normalizeTrackModel = (
 ): TrackModel[] =>
   tracks.map((track: TrackApiModel) => ({
     ...normalizeBaseModel(track),
-    artists: normalizeArtistModel(track.artists),
+    artists: normalizeArtistsModel(track.artists),
     duration: track.duration_ms,
     previewUrl: track.preview_url
   }))

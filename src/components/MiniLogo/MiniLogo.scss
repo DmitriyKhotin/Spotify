@@ -4,4 +4,8 @@
   background-image: url("img/mini-logo.svg");
   @include square(64px);
   @include icon_centre;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

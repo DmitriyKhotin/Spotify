@@ -2,9 +2,9 @@
 @import "src/styles/mixins";
 
 .sideBarRow {
-  margin-bottom: 16px;
   display: flex;
   align-items: center;
+  padding: 7px 0;
 
   &:hover {
     cursor: pointer;
@@ -22,4 +22,8 @@
     font-size: 19px;
     line-height: 22px;
   }
+}
+
+.sideBarRow-active {
+  border: 1px solid white;
 }

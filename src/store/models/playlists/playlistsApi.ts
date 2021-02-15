@@ -14,7 +14,7 @@ export type PlaylistApiModel = BaseApiModel & {
   }
 }
 
-export const normalizeArtistModel = (
+export const normalizePlaylistsModel = (
   playlists: PlaylistApiModel[]
 ): PlaylistModel[] =>
   playlists.map((playlist: PlaylistApiModel) => ({

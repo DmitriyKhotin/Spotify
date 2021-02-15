@@ -7,10 +7,12 @@ import './StartPage.scss'
 
 const StartPage: FC = () => {
   const history = useHistory<History>()
-
+  console.log('startpage')
   useEffect(() => {
-    if (localStorage.getItem('token'))
-      history.replace('/')
+    if (localStorage.getItem('token')) {
+      history.goBack()
+    }
+
   }, [])
 
   return (
