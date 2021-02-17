@@ -9,3 +9,4 @@ export type AlbumModel = BaseModelWithImage & {
   popularity: number
   tracks: TrackModel[]
 }
+

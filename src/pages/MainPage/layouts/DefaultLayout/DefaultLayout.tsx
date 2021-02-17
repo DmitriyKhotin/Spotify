@@ -11,7 +11,7 @@ const DefaultLayout: FC = () => {
 
   useEffect(() => {
     if (store.meta !== Meta.loading)
-      Promise.all([store.fetchAlbums(true), store.fetchPlaylists(true)]).then()
+      Promise.all([store.fetchAlbums(true), store.fetchPlaylists(true)]).then(r => console.log(r)).catch(e => console.log(e))
   }, [])
 
   useAuth()

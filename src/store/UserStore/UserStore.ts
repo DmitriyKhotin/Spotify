@@ -1,10 +1,10 @@
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction, runInAction,} from 'mobx'
 import {
-  AlbumModel, ArtistApiModel,
-  ArtistModel,
-  normalizeAlbumModel, normalizeArtistsModel,
+  ArtistApiModel,
+  ArtistModel, BaseApiModelWithImage, BaseModelWithImage,
+  normalizeAlbumsModel, normalizeArtistsModel,
   normalizePlaylistsModel, normalizeProfileModel, normalizeTrackModel, PlaylistApiModel,
-  PlaylistModel, ProfileApiModel,
+  ProfileApiModel,
   ProfileModel, ResponseAlbumApiModel, TrackApiModel,
   TrackModel
 } from '../models'
@@ -30,8 +30,8 @@ type Items<T> = {
 export default class UserStore {
 
   profile: ProfileModel = initialProfile
-  albums: AlbumModel[] =[]
-  playlists: PlaylistModel[] = []
+  albums: BaseModelWithImage[] =[]
+  playlists: BaseModelWithImage[] = []
   topTracks: TrackModel[] = []
   topArtists: ArtistModel[] = []
   meta: Meta = Meta.initial
@@ -62,7 +62,7 @@ export default class UserStore {
 
   async fetch<T>(callback: (value?: T) => void , url: string, force: boolean = false): Promise<void> {
 
-    if (!force && (this.meta === Meta.loading || this.meta === Meta.success)) {
+    if (!force && (this.meta === Meta.loading)) {
       return
     }
 
@@ -84,12 +84,12 @@ export default class UserStore {
     })
   }
 
-  setPlaylist(data?: Items<PlaylistApiModel[]>): void {
+  setPlaylist(data?: Items<BaseApiModelWithImage[]>): void {
     !data ? this.playlists = [] : this.playlists = normalizePlaylistsModel(data.items)
   }
 
   setAlbums(data?: Items<ResponseAlbumApiModel[]>): void {
-    !data ? this.albums = [] : this.albums = normalizeAlbumModel(data.items)
+    !data ? this.albums = [] : this.albums = normalizeAlbumsModel(data.items)
   }
 
   setTopTracks(data?: Items<TrackApiModel[]>): void {

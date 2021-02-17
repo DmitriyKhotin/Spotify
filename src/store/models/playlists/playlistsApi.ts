@@ -1,4 +1,4 @@
-import {BaseApiModel, normalizeBaseModel} from "../extends";
+import { BaseApiModel, BaseApiModelWithImage, BaseModelWithImage, normalizeBaseModel } from '../extends'
 import {ImagesApiModel} from "../imagesApi";
 import {PlaylistModel} from "./playlist";
 
@@ -14,13 +14,20 @@ export type PlaylistApiModel = BaseApiModel & {
   }
 }
 
-export const normalizePlaylistsModel = (
-  playlists: PlaylistApiModel[]
-): PlaylistModel[] =>
-  playlists.map((playlist: PlaylistApiModel) => ({
+export const normalizePlaylistModel = (
+  playlist: PlaylistApiModel
+): PlaylistModel => ({
     ...normalizeBaseModel(playlist),
     description: playlist.description,
-    images: playlist.images,
     owner: playlist.owner.display_name,
-    tracks: playlist.tracks
+    tracks: playlist.tracks,
+    images: playlist.images
+  })
+
+export const normalizePlaylistsModel = (
+  playlists: BaseApiModelWithImage[]
+): BaseModelWithImage[] =>
+  playlists.map((playlist: BaseApiModelWithImage) => ({
+    ...normalizeBaseModel(playlist),
+    images: playlist.images
   }))

@@ -1,7 +1,12 @@
-import React, { FC } from 'react'
-import Track from '../../../../components/Track'
+import React, { FC, useEffect, useState } from 'react'
+import Track from '@components/Track'
 
 const AlbumLayout: FC = () => {
+  const [album, setAlbum] = useState()
+
+  useEffect(() => {
+
+  }, [])
 
   return (
     <div>
