@@ -1,6 +1,6 @@
 import artistsImg from './img/artists.svg'
 import tracksImg from './img/tracks.svg'
-import {Paths} from "../../config/routes";
+import {paths} from "../../config/routes";
 
 export enum SideBarEnum {
   tracks = 'tracks',
@@ -10,19 +10,19 @@ export enum SideBarEnum {
 export type SideBarLabel = {
   img: string
   title: string
-  link: Paths
+  link: string
 }
 
 export const mapSideBarLabels: Record<SideBarEnum, SideBarLabel> = {
   [SideBarEnum.tracks]: {
     img: tracksImg,
     title: 'Tracks',
-    link: Paths.TOP_TRACKS
+    link: paths.TOP_TRACKS
   },
   [SideBarEnum.artists]: {
     img: artistsImg,
     title: 'Artists',
-    link: Paths.TOP_ARTISTS
+    link: paths.TOP_ARTISTS
   }
 }
 

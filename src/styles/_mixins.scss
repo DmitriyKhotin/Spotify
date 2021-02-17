@@ -1,6 +1,4 @@
 @mixin dot($diametr, $color) {
-  content: "";
-  display: block;
   height: $diametr;
   width: $diametr;
   background-color: $color;

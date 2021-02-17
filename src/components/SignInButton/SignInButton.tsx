@@ -1,15 +1,12 @@
-import React, {FC, memo} from 'react'
-import { useHistory } from 'react-router-dom'
+import React, {FC} from 'react'
 import './SignInButton.scss'
-import {signIn_href} from "@config/appData";
+import {authHref} from "@config/appData";
 
 
 const SignInButton: FC = () => {
-  const history = useHistory<History>()
 
   const logIn = () => {
-    // history.push(signIn_href)
-    window.location.href = signIn_href
+    window.location.href = authHref
   }
 
   return (
@@ -19,4 +16,4 @@ const SignInButton: FC = () => {
   )
 }
 
-export default memo<FC>(SignInButton)
+export default SignInButton

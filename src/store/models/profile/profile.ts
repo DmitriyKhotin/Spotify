@@ -1,8 +1,6 @@
-import {ImagesApiModel} from "../imagesApi";
-import {BaseModel} from "../extends";
+import { BaseModelWithImage } from '../extends'
 
-export type ProfileModel = BaseModel & {
+export type ProfileModel = Omit<BaseModelWithImage, 'href'> & {
   product: string
-  images: ImagesApiModel[]
   email: string
 }

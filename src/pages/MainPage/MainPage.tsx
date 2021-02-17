@@ -1,25 +1,26 @@
-import React, {FC} from 'react'
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom'
+import React, { FC, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import Searcher from '@components/Searcher'
 import SideBar from '@components/SideBar'
 import ProfileBar from '@components/ProfileBar'
 import MiniLogo from '@components/MiniLogo'
-import DefaultLayout from '@layouts/DefaultLayout'
+import DefaultLayout from './layouts/DefaultLayout'
 import './MainPage.scss'
-import {Paths} from "../../config/routes";
-import TopTracksLayout from "../../layouts/TopTracksLayout";
-import TopArtistsLayout from "../../layouts/TopArtistsLayout";
+import {paths} from "../../config/routes";
+import TopTracksLayout from "./layouts/TopTracksLayout";
+import TopArtistsLayout from "./layouts/TopArtistsLayout";
 import PrivateRoute from "../../components/PrivateRoute";
-import {getToken} from "../../config/appData";
+import { getToken } from '../../config/appData'
+
 
 
 const MainPage: FC = () => {
-  console.log('mainpage')
   const history = useHistory()
+
   const token: string = getToken(history.location.hash)
   if (token) {
     localStorage.setItem('token', token)
-    history.replace('/')
+    history.replace(paths.ROOT)
   }
 
   return (
@@ -36,9 +37,10 @@ const MainPage: FC = () => {
       <div className="main">
         <SideBar/>
         <div className="main__delimiter"/>
-        <PrivateRoute exact path={Paths.ROOT} component={DefaultLayout}/>
-        <PrivateRoute exact path={Paths.TOP_TRACKS} component={TopTracksLayout}/>
-        <PrivateRoute exact path={Paths.TOP_ARTISTS} component={TopArtistsLayout}/>
+        <PrivateRoute exact path={paths.ROOT}><DefaultLayout/></PrivateRoute>
+        <PrivateRoute exact path={paths.TOP_TRACKS}><TopTracksLayout/></PrivateRoute>
+        <PrivateRoute exact path={paths.TOP_ARTISTS}><TopArtistsLayout/></PrivateRoute>
+        <PrivateRoute exact path={paths.ALBUM.mask}><TopArtistsLayout/></PrivateRoute>
       </div>
     </>
   );

@@ -1,17 +1,17 @@
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction, runInAction,} from 'mobx'
 import {
-  AlbumModel,
+  AlbumModel, ArtistApiModel,
   ArtistModel,
-  normalizeAlbumModel,
-  normalizePlaylistsModel, normalizeProfileModel, normalizeTrackModel,
-  PlaylistModel,
-  ProfileModel,
+  normalizeAlbumModel, normalizeArtistsModel,
+  normalizePlaylistsModel, normalizeProfileModel, normalizeTrackModel, PlaylistApiModel,
+  PlaylistModel, ProfileApiModel,
+  ProfileModel, ResponseAlbumApiModel, TrackApiModel,
   TrackModel
-} from "../models";
-import {Meta} from "@utils/meta";
-import {getRequest} from "@utils/getRequest";
-import {apiUrls} from "@config/apiUrls";
-import {StatusCode} from "@utils/apiTypes";
+} from '../models'
+import {Meta} from '@utils/meta'
+import {getRequest} from '@utils/getRequest'
+import {apiUrls} from '@config/apiUrls'
+import {StatusCode} from '@utils/apiTypes'
 
 const initialProfile = {
   id: '',
@@ -19,9 +19,12 @@ const initialProfile = {
   product: '',
   images: [],
   email: '',
-  href: '',
   spotify: '',
   type: ''
+}
+
+type Items<T> = {
+  items: T
 }
 
 export default class UserStore {
@@ -42,84 +45,83 @@ export default class UserStore {
       topTracks: observable,
       topArtists: observable,
       meta: observable,
+      errorCode: observable,
+      fetch: action.bound,
+      setTopArtists: action.bound,
+      setTopTracks: action.bound,
+      setPlaylist: action.bound,
+      setAlbums: action.bound,
+      setProfile: action.bound,
       fetchAlbums: action.bound,
       fetchPlaylists: action.bound,
       fetchProfile: action.bound,
-      fetchTopTracks: action.bound
+      fetchTopTracks: action.bound,
+      fetchTopArtists: action.bound
     })
   }
 
-  async fetch(callback: (value: any) => void , url: string, force: boolean = false): Promise<void> {
+  async fetch<T>(callback: (value?: T) => void , url: string, force: boolean = false): Promise<void> {
 
     if (!force && (this.meta === Meta.loading || this.meta === Meta.success)) {
       return
     }
 
     this.meta = Meta.loading;
-    callback('')
+    callback()
 
-    const { isError, data } = await getRequest(url)
+    const { errorCode, data } = await getRequest<T>(url)
 
-    if (isError) {
+    if (errorCode) {
       this.meta = Meta.error
-      this.errorCode = isError
+      this.errorCode = errorCode
       return
     }
 
     runInAction(() => {
       this.meta = Meta.success
       this.errorCode = null
-      callback(data)
+      callback(data!)
     })
   }
 
-  setPlaylist(data: any | void): void {
-    if (!data)
-      this.playlists = []
-    else
-      this.playlists = normalizePlaylistsModel(data.items)
+  setPlaylist(data?: Items<PlaylistApiModel[]>): void {
+    !data ? this.playlists = [] : this.playlists = normalizePlaylistsModel(data.items)
   }
 
-  setAlbums(data: any | void): void {
-    if (!data)
-      this.albums = []
-    else
-      this.albums = normalizeAlbumModel(data.items)
+  setAlbums(data?: Items<ResponseAlbumApiModel[]>): void {
+    !data ? this.albums = [] : this.albums = normalizeAlbumModel(data.items)
   }
 
-  setTopTracks(data: any | void): void {
-    console.log(data)
-    if (!data)
-      this.topTracks = []
-    else
-      this.topTracks = normalizeTrackModel(data.items)
+  setTopTracks(data?: Items<TrackApiModel[]>): void {
+    !data ? this.topTracks = [] : this.topTracks = normalizeTrackModel(data.items)
   }
 
-  setProfile(data: any | void): void {
-    if (!data)
-      this.profile = initialProfile
-    else
-      this.profile = normalizeProfileModel(data)
+  setTopArtists(data?: Items<ArtistApiModel[]>): void {
+    !data ? this.topArtists = [] : this.topArtists = normalizeArtistsModel(data.items)
+  }
+
+  setProfile(data?: ProfileApiModel): void {
+    !data ? this.profile = initialProfile : this.profile = normalizeProfileModel(data)
   }
 
   async fetchPlaylists(force: boolean = false): Promise<void> {
-    // @ts-ignore
-    this.fetch(this.setPlaylist.bind(this), apiUrls.user.playlists(), force)
+    await this.fetch<Items<PlaylistApiModel[]>>(this.setPlaylist.bind(this), apiUrls.user.playlists(), force)
   }
 
   async fetchAlbums(force: boolean = false): Promise<void> {
-    // @ts-ignore
-    this.fetch(this.setAlbums.bind(this), apiUrls.user.albums(), force)
+    await this.fetch<Items<ResponseAlbumApiModel[]>>(this.setAlbums.bind(this), apiUrls.user.albums(), force)
   }
 
   async fetchTopTracks(force: boolean = false): Promise<void> {
-    console.log('fetchTopTRacks')
-    // @ts-ignore
-    this.fetch(this.setTopTracks.bind(this), apiUrls.user.topTracks(), force)
+    await this.fetch<Items<TrackApiModel[]>>(this.setTopTracks.bind(this), apiUrls.user.topTracks(), force)
+  }
+
+  async fetchTopArtists(force: boolean = false): Promise<void> {
+    await this.fetch<Items<ArtistApiModel[]>>(this.setTopArtists.bind(this), apiUrls.user.topArtists(), force)
   }
 
   async fetchProfile(force: boolean = false): Promise<void> {
-    this.fetch(this.setProfile.bind(this), apiUrls.user.profile(), force)
+    await this.fetch<ProfileApiModel>(this.setProfile.bind(this), apiUrls.user.profile(), force)
   }
 
   metaChangedReaction: IReactionDisposer = reaction(

@@ -1,4 +1,4 @@
-import React, {FC, memo} from 'react'
+import React, {FC} from 'react'
 import './BigLogo.scss'
 
 const BigLogo: FC = () => {
@@ -7,4 +7,4 @@ const BigLogo: FC = () => {
   )
 }
 
-export default memo<FC>(BigLogo)
+export default BigLogo

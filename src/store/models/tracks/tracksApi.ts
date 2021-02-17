@@ -1,6 +1,6 @@
-import {TrackModel} from "./track";
-import {BaseApiModel, normalizeBaseModel} from "../extends";
-import {ArtistApiModel, normalizeArtistsModel} from "../artists";
+import {TrackModel} from './track'
+import {BaseApiModel, normalizeBaseModel} from '../extends'
+import {ArtistApiModel, normalizeArtistsModel} from '../artists'
 
 export type TrackApiModel = BaseApiModel & {
   preview_url: string | null

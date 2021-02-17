@@ -1,13 +1,16 @@
 import React, {FC, useEffect} from "react";
-import store from "@store/UserStore";
 import {observer} from "mobx-react-lite";
+import useAuth from '@utils/useAuth'
+import store from "@store/UserStore";
+
 
 const TopTracksLayout: FC = () => {
 
   useEffect(() => {
-    console.log('TopTracks')
-    store.fetchTopTracks()
+    store.fetchTopTracks(true)
   }, [])
+
+  useAuth()
 
   return (
     <div className="topTracksLayout">

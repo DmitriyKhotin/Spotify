@@ -1,8 +1,6 @@
-import {BaseModel} from "../extends";
-import {ImagesApiModel} from "../imagesApi";
+import { BaseModelWithImage } from '../extends'
 
-export type ArtistModel = BaseModel & {
-  images: ImagesApiModel[]
+export type ArtistModel = BaseModelWithImage & {
   popularity: number
   folowers: number | null
 }

@@ -1,0 +1,65 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.track {
+  height: max-content;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+
+  &__number {
+    color: $menu-color;
+    font-size: 26px;
+    line-height: 100%;
+    margin-right: 30px;
+  }
+
+  &__title {
+    color: $menu-color;
+    font-size: 19px;
+    line-height: 22px;
+  }
+
+  &__authors {
+    display: flex;
+
+    .author {
+      color: $signature-color;
+      font-size: 14px;
+      line-height: 16px;
+      display: flex;
+      align-items: center;
+
+      &:after {
+        @include dot(5px, $signature-color);
+        content: '';
+        display: inline-block;
+        margin: 0 5px;
+      }
+
+      &:last-child {
+        &:after {
+          content: none;
+        }
+      }
+    }
+
+
+    .mini-dot {
+      @include dot(5px, $signature-color);
+      margin: 0 5px;
+    }
+  }
+
+  &__duration {
+    color: $signature-color;
+    font-size: 18px;
+    line-height: 21px;
+  }
+}

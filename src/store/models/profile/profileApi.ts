@@ -19,7 +19,6 @@ export const normalizeProfileModel = (
   id: profile.id,
   name: profile.display_name,
   type: profile.type,
-  href: '',
   spotify: profile.external_urls.spotify,
   email: profile.email,
   images: profile.images,

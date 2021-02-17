@@ -6,11 +6,11 @@ export enum StatusCode {
 
 export type ApiResp<SuccessData = any, ErrorData = any> =
   | {
-  isError: false;
+  errorCode: null;
   data: SuccessData;
 }
   | {
-  isError: StatusCode | null;
+  errorCode: StatusCode;
   data: ErrorData;
 }
 

@@ -3,11 +3,12 @@
 .card {
   margin-right: 10px;
   @include square(180px);
+  border-radius: 50%;
+  @include square(180px);
+  @include icon_centre;
 
-  &__img {
-    border-radius: 50%;
-    @include square(180px);
-    @include icon_centre;
+  &:hover {
+    cursor: pointer;
   }
 
 }

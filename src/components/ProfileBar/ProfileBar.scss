@@ -16,11 +16,11 @@
       opacity: .8;
       cursor: pointer;
     }
-  }
 
-  .active {
-    opacity: .8;
-    cursor: pointer;
+    &_active {
+       opacity: .8;
+       cursor: pointer;
+     }
   }
 
   &__name {
@@ -30,17 +30,20 @@
     margin-right: 10px;
   }
 
-  .arrow-bottom {
+  &__arrow {
     @include square(20px);
     @include icon_centre;
-    background: url("img/arrow-bottom.svg");
     transition: ease-out 0.2s;
-  }
 
-  .arrow-top {
-    @extend .arrow-bottom;
-    transform: rotate(180deg);
 
+    &-bottom {
+      background: url("img/arrow-bottom.svg");
+    }
+
+    &-top {
+      background: url("img/arrow-bottom.svg");
+      transform: rotate(180deg);
+    }
   }
 
   .dropdown-list {

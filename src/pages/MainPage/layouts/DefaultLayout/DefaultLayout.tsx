@@ -5,26 +5,18 @@ import store from "@store/UserStore";
 import {observer} from "mobx-react-lite";
 import {Meta} from "@utils/meta";
 import Loader from "@components/Loader";
-import {useHistory} from "react-router-dom";
-import {StatusCode} from "@utils/apiTypes";
+import useAuth from '@utils/useAuth'
 
 const DefaultLayout: FC = () => {
 
-  const history = useHistory<History>()
-
   useEffect(() => {
-    store.fetchAlbums()
-    store.fetchPlaylists(true)
+    if (store.meta !== Meta.loading)
+      Promise.all([store.fetchAlbums(true), store.fetchPlaylists(true)]).then()
   }, [])
 
-  useEffect(() => {
-    if (store.errorCode === StatusCode.unauthorized) {
-      localStorage.removeItem('token')
-      history.push('/login')
-    }
-  }, [store.errorCode])
+  useAuth()
 
-  if (store.meta === Meta.loading || store.meta === Meta.error)
+  if (store.meta === Meta.loading)
     return <Loader/>
 
   return (

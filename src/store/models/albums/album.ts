@@ -1,12 +1,10 @@
-import {BaseModel} from "../extends";
-import {ImagesApiModel} from "../imagesApi";
+import { BaseModelWithImage } from '../extends'
 import {TrackModel} from "../tracks";
 
-export type AlbumModel = BaseModel & {
+export type AlbumModel = BaseModelWithImage & {
   albumType: string
   addedAt: string
   releaseDate: string
-  images: ImagesApiModel[]
   totalTracks: number
   popularity: number
   tracks: TrackModel[]

@@ -1,4 +1,4 @@
-import React, {FC, memo} from 'react'
+import React, {FC} from 'react'
 import './OportunityList.scss'
 
 type Oportunity = {
@@ -24,4 +24,4 @@ const OportunityList: FC = () => {
   )
 }
 
-export default memo<FC>(OportunityList)
+export default OportunityList

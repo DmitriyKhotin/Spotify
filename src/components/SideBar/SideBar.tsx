@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react'
+import React, {FC, memo} from 'react'
 import './SideBar.scss'
 import Title from "@components/Title";
 import SideBarRow from "./SideBarRow";
@@ -25,4 +25,4 @@ const SideBar: FC = () => {
   )
 }
 
-export default SideBar
+export default memo(SideBar)

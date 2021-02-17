@@ -34,3 +34,4 @@ export const normalizeAlbumModel = (
     popularity: album.album.popularity,
     releaseDate: album.album.release_date
   }))
+

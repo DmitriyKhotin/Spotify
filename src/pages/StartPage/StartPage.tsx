@@ -4,15 +4,16 @@ import BigLogo from '@components/BigLogo'
 import OportunityList from '@components/OportunityList'
 import SignInButton from '@components/SignInButton'
 import './StartPage.scss'
+import { paths } from '../../config/routes'
 
 const StartPage: FC = () => {
-  const history = useHistory<History>()
-  console.log('startpage')
+  const history = useHistory()
+
   useEffect(() => {
     if (localStorage.getItem('token')) {
-      history.goBack()
+      history.length > 2 ? history.goBack() : history.replace(paths.ROOT)
+      console.log(history)
     }
-
   }, [])
 
   return (

@@ -5,7 +5,6 @@ import {SideBarLabel} from "../config";
 
 const SideBarRow: FC<SideBarLabel> = ({title, img, link}) => {
 
-
   return (
     <NavLink className="sideBarRow" to={link} activeClassName={'sideBarRow-active'}>
       <img src={img} className="sideBarRow__icon" alt={title.toLowerCase()}/>

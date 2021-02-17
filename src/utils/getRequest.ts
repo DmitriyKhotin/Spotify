@@ -1,24 +1,8 @@
-import axios, {AxiosResponse} from "axios";
+import axios, {AxiosResponse} from 'axios'
 
 import {ApiResp} from "./apiTypes";
 
-
-// const getNormalizedData = (response: AxiosResponse, type: ApiEnum) => {
-//   switch (type) {
-//     case ApiEnum.albums:
-//       return normalizeAlbumModel(response.data.items)
-//     case ApiEnum.playlists:
-//       return normalizePlaylistsModel(response.data.items)
-//     case ApiEnum.tracks:
-//       return normalizeTrackModel(response.data.items)
-//     case ApiEnum.artists:
-//       return normalizeArtistsModel(response.data.items)
-//     case ApiEnum.profile:
-//       return normalizeProfileModel(response.data)
-//   }
-// }
-
-export const getRequest = async (url: string, optionalHeaders = {}): Promise<ApiResp<any, null>> => {
+export const getRequest = async <T>(url: string, optionalHeaders = {}): Promise<ApiResp<T, null>> => {
   try {
     const response: AxiosResponse  = await axios({
       method: 'get',
@@ -30,14 +14,14 @@ export const getRequest = async (url: string, optionalHeaders = {}): Promise<Api
     })
     console.log(response)
     return {
-      isError: null,
+      errorCode: null,
       data: response.data
     }
   }
   catch (e) {
-    console.log(e.response)
+
     return {
-      isError: e.response.status,
+      errorCode: e.response.status,
       data: null
     }
   }

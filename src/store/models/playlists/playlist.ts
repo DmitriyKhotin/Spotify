@@ -1,10 +1,8 @@
-import {BaseModel} from "../extends";
-import {ImagesApiModel} from "../imagesApi";
+import { BaseModelWithImage } from '../extends'
 
-export type PlaylistModel = BaseModel & {
+export type PlaylistModel = BaseModelWithImage & {
   description: string
   owner:  string
-  images: ImagesApiModel[]
   tracks: {
     href: string
     total: number

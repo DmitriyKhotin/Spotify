@@ -1,19 +1,26 @@
-import React, {FC, Component, createElement} from 'react'
+import React, { FC, createElement, ReactNode } from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import {Paths} from '@config/routes'
+import {paths} from '@config/routes'
 
-const PrivateRoute: FC<{component: FC, path: Paths, exact: boolean}> = ({component, ...rest}) => {
+const PrivateRoute: FC<{children: ReactNode, path: string, exact: boolean}> = ({children, ...rest}) => {
 
   return (
-    <Route
-      {...rest}
-      render={
-        (props: any) =>
+    // <Route
+    //   {...rest}
+    //   render={
+    //     (props: any) =>
+    //     localStorage.getItem('token')
+    //       ? createElement(component, props)
+    //       : <Redirect to={paths.LOGIN} />
+    //   }
+    // />
+    <Route {...rest}>
+      {
         localStorage.getItem('token')
-          ? createElement(component, props)
-          : <Redirect to={Paths.LOGIN} />
+          ? children
+          : <Redirect to={paths.LOGIN}/>
       }
-    />
+    </Route>
   )
 }
 
