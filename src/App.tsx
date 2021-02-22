@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-import StartPage from '@pages/StartPage'
+import StartPage from './pages/StartPage'
 import MainPage from '@pages/MainPage'
 import {paths} from '@config/routes'
 

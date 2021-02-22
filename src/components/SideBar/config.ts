@@ -1,6 +1,6 @@
 import artistsImg from './img/artists.svg'
 import tracksImg from './img/tracks.svg'
-import {paths} from "../../config/routes";
+import {paths} from "@config/routes"
 
 export enum SideBarEnum {
   tracks = 'tracks',

@@ -1,5 +1,7 @@
+import React from 'react'
 import NativeLoader from 'react-loader-spinner'
 import './Loader.scss'
+
 
 const Loader = () => {
 
