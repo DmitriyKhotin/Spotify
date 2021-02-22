@@ -37,6 +37,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-react-css-modules": "^5.2.6",
     "babel-preset-mobx": "^2.0.0",
+    "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.2",
     "fork-ts-checker-webpack-plugin": "^6.1.0",
     "html-webpack-plugin": "^5.1.0",

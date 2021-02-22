@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin')
 
 const srcPath = path.resolve(__dirname, 'src');
 const isProd = process.env.NODE_ENV === 'production';
@@ -10,6 +11,14 @@ const isProd = process.env.NODE_ENV === 'production';
 const plugins = [
   new HtmlWebpackPlugin({
     template: path.join(srcPath, 'index.html')
+  }),
+  new CopyPlugin({
+    patterns: [
+      {
+        from: path.resolve(__dirname, 'src/favicon.ico'),
+        to: path.resolve(__dirname, 'dist')
+      }
+    ]
   }),
   !isProd && new ReactRefreshWebpackPlugin(),
   new MiniCssExtractPlugin({
@@ -54,7 +63,8 @@ module.exports = {
   devtool: 'eval-source-map',
   output: {
     path:  path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: "/"
   },
   resolve: {
     extensions: ['.jsx', '.js', '.tsx', '.ts'],

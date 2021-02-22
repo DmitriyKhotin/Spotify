@@ -12,7 +12,7 @@ const TopArtistsLayout: FC = () => {
   useAuth()
 
   return (
-    <div className="topArtistsLAyout">
+    <div className="topArtistsLayout">
 
     </div>
   )

@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react'
+import React, { FC, memo, useCallback, useMemo } from 'react'
 import track from './Track.module.scss'
 import { TrackModel } from '../../store/models/tracks'
 
@@ -16,9 +16,9 @@ const Track: FC<IProps> = ({name, artists, duration, previewUrl, id, index, onCl
   }
 
   const memoDuration = useMemo(() => convertMiliSecToMinSec(), [duration])
-
+  const onClickMemo = useCallback(onClick, [])
   return (
-    <div className={track.track} onClick={onClick}>
+    <div className={track.track} onClick={onClickMemo}>
       <div className={track.flex}>
         <p className={track.track__number}>{index}</p>
         <div>
@@ -35,4 +35,4 @@ const Track: FC<IProps> = ({name, artists, duration, previewUrl, id, index, onCl
   )
 }
 
-export default Track
+export default memo(Track)
