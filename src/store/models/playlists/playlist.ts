@@ -1,10 +1,8 @@
 import { BaseModelWithImage } from '../extends'
+import { TrackModel } from '../tracks'
 
 export type PlaylistModel = BaseModelWithImage & {
   description: string
   owner:  string
-  tracks: {
-    href: string
-    total: number
-  }
+  tracks: TrackModel[]
 }

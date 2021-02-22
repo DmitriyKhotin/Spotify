@@ -28,4 +28,8 @@
     background-color: $menu-color;
     margin: 48px 60px 0 52px;
   }
+
+  &__layout {
+    flex-grow: 1;
+  }
 }

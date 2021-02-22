@@ -1,6 +1,7 @@
 import { BaseApiModel, BaseApiModelWithImage, BaseModelWithImage, normalizeBaseModel } from '../extends'
 import {ImagesApiModel} from "../imagesApi";
 import {PlaylistModel} from "./playlist";
+import { normalizeTrackModel, TrackApiModel } from '../tracks'
 
 export type PlaylistApiModel = BaseApiModel & {
   description: string
@@ -10,6 +11,9 @@ export type PlaylistApiModel = BaseApiModel & {
   images: ImagesApiModel[]
   tracks: {
     href: string
+    items: [{
+      track: TrackApiModel
+    }]
     total: number
   }
 }
@@ -20,7 +24,7 @@ export const normalizePlaylistModel = (
     ...normalizeBaseModel(playlist),
     description: playlist.description,
     owner: playlist.owner.display_name,
-    tracks: playlist.tracks,
+    tracks: playlist.tracks.items.map(track => normalizeTrackModel(track.track)),
     images: playlist.images
   })
 

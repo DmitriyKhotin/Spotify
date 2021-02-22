@@ -3,5 +3,12 @@
   &__slider {
     display: flex;
     justify-content: space-between;
+
+    &_cursor-pointer {
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
+
 }

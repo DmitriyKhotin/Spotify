@@ -1,0 +1,61 @@
+@import 'src/styles/variables';
+@import 'src/styles/mixins';
+
+.album {
+
+  &__header {
+    display: flex;
+    padding-bottom: 30px;
+    border-bottom: 1px solid $signature-color;
+
+    &__title {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: 25px;
+      padding-top: 20px;
+
+      &__item {
+        display: flex;
+
+        &_size-middle {
+          @include item(32px, $menu-color);
+        }
+
+        &_size-big {
+          @include item(58px, $menu-color);
+        }
+
+        &_color-white {
+          @include item(20px, $menu-color);
+        }
+
+        &_color-gray {
+          @include item(20px, $signature-color);
+          display: flex;
+          align-items: center;
+
+          &:before {
+            @include dot(6px, $signature-color);
+            content: '';
+            margin: 0 8px;
+          }
+        }
+      }
+    }
+  }
+
+  &__track-wrapper {
+    margin-top: 20px;
+  }
+
+  &__player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    width: 100%;
+    background-color: black;
+  }
+}

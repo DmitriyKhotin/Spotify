@@ -7,9 +7,9 @@ import store from "@store/UserStore";
 const TopTracksLayout: FC = () => {
 
   useEffect(() => {
-    store.fetchTopTracks(true)
+    store.fetchTopTracks()
   }, [])
-
+  console.log(store.topTracks)
   useAuth()
 
   return (

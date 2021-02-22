@@ -15,7 +15,7 @@ export type ArtistApiModel = BaseApiModel & {
 export const normalizeArtistsModel = (
   artists: ArtistApiModel[]
 ): ArtistModel[] =>
-  artists.map((artist: ArtistApiModel) => ({
+  artists?.map((artist: ArtistApiModel) => ({
     ...normalizeBaseModel(artist),
     images: artist.images,
     folowers: (artist.followers && artist.followers.total) ? artist.followers.total : null,

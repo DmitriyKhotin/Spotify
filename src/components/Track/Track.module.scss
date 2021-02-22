@@ -3,10 +3,10 @@
 
 .track {
   height: max-content;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 8px 8px;
 
   .flex {
     display: flex;
@@ -61,5 +61,20 @@
     color: $signature-color;
     font-size: 18px;
     line-height: 21px;
+  }
+
+  &:hover {
+    background-color: #929292;
+    cursor: pointer;
+    border-radius: 4px;
+
+    .track__number {
+      font-size: 0;
+      @include icon_centre;
+      background: url("./img/play-button.svg");
+      @include square(24px);
+      margin-right: 21px;
+    }
+
   }
 }

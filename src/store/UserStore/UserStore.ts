@@ -1,9 +1,11 @@
 import {action, IReactionDisposer, makeAutoObservable, observable, reaction, runInAction,} from 'mobx'
 import {
+  AlbumApiModel,
+  AlbumModel,
   ArtistApiModel,
-  ArtistModel, BaseApiModelWithImage, BaseModelWithImage,
-  normalizeAlbumsModel, normalizeArtistsModel,
-  normalizePlaylistsModel, normalizeProfileModel, normalizeTrackModel, PlaylistApiModel,
+  ArtistModel, BaseApiModelWithImage, BaseModelWithImage, normalizeAlbumModel,
+  normalizeAlbumsModel, normalizeArtistsModel, normalizePlaylistModel,
+  normalizePlaylistsModel, normalizeProfileModel, normalizeTracksModel, PlaylistApiModel, PlaylistModel,
   ProfileApiModel,
   ProfileModel, ResponseAlbumApiModel, TrackApiModel,
   TrackModel
@@ -12,6 +14,7 @@ import {Meta} from '@utils/meta'
 import {getRequest} from '@utils/getRequest'
 import {apiUrls} from '@config/apiUrls'
 import {StatusCode} from '@utils/apiTypes'
+import { ApiResp } from '../../utils/apiTypes'
 
 const initialProfile = {
   id: '',
@@ -56,7 +59,9 @@ export default class UserStore {
       fetchPlaylists: action.bound,
       fetchProfile: action.bound,
       fetchTopTracks: action.bound,
-      fetchTopArtists: action.bound
+      fetchTopArtists: action.bound,
+      fetchAlbum: action.bound,
+      fetchPlaylist: action.bound
     })
   }
 
@@ -93,14 +98,20 @@ export default class UserStore {
   }
 
   setTopTracks(data?: Items<TrackApiModel[]>): void {
-    !data ? this.topTracks = [] : this.topTracks = normalizeTrackModel(data.items)
+    if (data)
+      console.log(normalizeTracksModel(data.items))
+    !data ? this.topTracks = [] : this.topTracks = normalizeTracksModel(data.items)
   }
 
   setTopArtists(data?: Items<ArtistApiModel[]>): void {
+    if (data)
+      console.log(normalizeArtistsModel(data.items))
     !data ? this.topArtists = [] : this.topArtists = normalizeArtistsModel(data.items)
   }
 
   setProfile(data?: ProfileApiModel): void {
+    if (data)
+      console.log(normalizeProfileModel(data))
     !data ? this.profile = initialProfile : this.profile = normalizeProfileModel(data)
   }
 
@@ -122,6 +133,52 @@ export default class UserStore {
 
   async fetchProfile(force: boolean = false): Promise<void> {
     await this.fetch<ProfileApiModel>(this.setProfile.bind(this), apiUrls.user.profile(), force)
+  }
+
+  async fetchAlbum(path: string): Promise<AlbumModel | void> {
+    if ( this.meta === Meta.loading) {
+      return
+    }
+
+    this.meta = Meta.loading;
+
+    const { errorCode, data } = await getRequest<AlbumApiModel>(apiUrls.model(path))
+
+    if (errorCode) {
+      this.meta = Meta.error
+      this.errorCode = errorCode
+      return
+    }
+
+    runInAction(() => {
+      this.meta = Meta.success
+      this.errorCode = null
+    })
+
+    return normalizeAlbumModel(data!)
+  }
+
+  async fetchPlaylist(path: string): Promise<PlaylistModel | void> {
+    if ( this.meta === Meta.loading) {
+      return
+    }
+
+    this.meta = Meta.loading;
+
+    const { errorCode, data } = await getRequest<PlaylistApiModel>(apiUrls.model(path))
+
+    if (errorCode) {
+      this.meta = Meta.error
+      this.errorCode = errorCode
+      return
+    }
+
+    runInAction(() => {
+      this.meta = Meta.success
+      this.errorCode = null
+    })
+
+    return normalizePlaylistModel(data!)
   }
 
   metaChangedReaction: IReactionDisposer = reaction(

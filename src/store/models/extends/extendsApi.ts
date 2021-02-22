@@ -20,7 +20,7 @@ export const normalizeBaseModel = (
 ): BaseModel => ({
   id: data.id,
   name: data.name,
-  spotify: data.external_urls.spotify,
+  spotify: data.external_urls?.spotify,
   href: data.href,
   type: data.type,
 })

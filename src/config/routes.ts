@@ -3,8 +3,7 @@ export const paths = {
   ROOT: '/',
   TOP_TRACKS: '/top/tracks',
   TOP_ARTISTS: '/top/artists',
-  ALBUM: {
-    mask: '/album/:id',
-    create: (id: string) => `/album/${id}`
-  }
+  ALBUM: '/albums/:id',
+  PLAYLIST: '/playlists/:id',
+  PROFILE: '/profile'
 }

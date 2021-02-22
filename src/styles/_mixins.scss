@@ -28,3 +28,9 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@mixin item($size, $color) {
+  font-size: $size;
+  line-height: 100%;
+  color: $color;
+}

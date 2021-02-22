@@ -1,14 +1,16 @@
 import React, { FC, useEffect } from 'react'
+import { observer } from 'mobx-react-lite'
 import useAuth from '@utils/useAuth'
 import store from '@store/UserStore'
-import { observer } from 'mobx-react-lite'
+import style from './ProfileLayout.module.scss'
 
-const TopArtistsLayout: FC = () => {
+
+const ProfileLayout: FC = () => {
 
   useEffect(() => {
-    store.fetchTopArtists()
+    store.fetchProfile()
   }, [])
-  console.log(store.topArtists)
+
   useAuth()
 
   return (
@@ -18,4 +20,4 @@ const TopArtistsLayout: FC = () => {
   )
 }
 
-export default observer(TopArtistsLayout)
+export default observer(ProfileLayout)

@@ -1,11 +1,16 @@
 import { AlbumModel } from "./album";
 import { BaseApiModelWithImage, BaseModelWithImage, normalizeBaseModel } from '../extends'
-import {normalizeTrackModel, TrackApiModel} from "../tracks";
+import {normalizeTracksModel, TrackApiModel} from "../tracks";
 import {formatDateDDMMYYYY} from "@config/formateDateDDMMYYYY";
 
 export type ResponseAlbumApiModel = {
   added_at: string
   album: AlbumApiModel
+}
+
+type AlbumArtist = {
+  name: string
+  id: string
 }
 
 export type AlbumApiModel = BaseApiModelWithImage & {
@@ -16,20 +21,24 @@ export type AlbumApiModel = BaseApiModelWithImage & {
   popularity: number
   tracks: {
     items: TrackApiModel[]
-  }
+  },
+  artists: AlbumArtist[]
 }
 
 export const normalizeAlbumModel = (
-  album: ResponseAlbumApiModel
+  album: AlbumApiModel
 ): AlbumModel =>({
-    ...normalizeBaseModel(album.album),
-    addedAt: formatDateDDMMYYYY(new Date(album.added_at)),
-    albumType: album.album.album_type,
-    tracks: normalizeTrackModel(album.album.tracks.items),
-    totalTracks: album.album.total_tracks,
-    popularity: album.album.popularity,
-    releaseDate: album.album.release_date,
-    images: album.album.images
+    ...normalizeBaseModel(album),
+    albumType: album.album_type,
+    tracks: normalizeTracksModel(album.tracks.items),
+    totalTracks: album.total_tracks,
+    popularity: album.popularity,
+    artist: {
+      name: album.artists[0].name,
+      id: album.artists[0].id
+    },
+    releaseDate: album.release_date,
+    images: album.images
   })
 
 export const normalizeAlbumsModel = (
