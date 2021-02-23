@@ -16,6 +16,7 @@ const redirect_uri =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
     : 'https://spotify-mini.vercel.app/'
+
 export const app: App = {
   client_id: '2314c60c89c345ddadf5827a04c3fc76',
   response_type: 'token',

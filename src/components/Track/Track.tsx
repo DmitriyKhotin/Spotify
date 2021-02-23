@@ -1,15 +1,25 @@
 import React, { FC, memo, useCallback, useMemo } from 'react'
 
 import { TrackModel } from '@store/models/tracks'
+import store from '@store/UserStore'
 
 import track from './Track.module.scss'
 
 interface IProps extends TrackModel {
   index: number
-  onClick: () => void
 }
 
-const Track: FC<IProps> = ({ name, artists, duration, index, onClick }) => {
+const Track: FC<IProps> = ({
+  name,
+  artists,
+  duration,
+  id,
+  spotify,
+  href,
+  previewUrl,
+  type,
+  index,
+}) => {
   const convertMiliSecToMinSec = () => {
     const min = Math.floor(duration / 1000 / 60)
     const sec = Math.floor((duration / 1000) % 60)
@@ -17,7 +27,21 @@ const Track: FC<IProps> = ({ name, artists, duration, index, onClick }) => {
   }
 
   const memoDuration = useMemo(() => convertMiliSecToMinSec(), [duration])
-  const onClickMemo = useCallback(onClick, [])
+  const onClickMemo = useCallback(
+    () =>
+      store.setTrack({
+        name,
+        artists,
+        duration,
+        id,
+        spotify,
+        href,
+        previewUrl,
+        type,
+      }),
+    []
+  )
+
   return (
     <div className={track.track} onClick={onClickMemo}>
       <div className={track.flex}>

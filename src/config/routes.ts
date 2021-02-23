@@ -6,4 +6,5 @@ export const paths = {
   ALBUM: '/albums/:id',
   PLAYLIST: '/playlists/:id',
   PROFILE: '/profile',
+  SEARCH: '/search',
 }

@@ -35,7 +35,7 @@ import {
   TrackModel,
 } from '../models'
 
-const initialProfile = {
+const initialProfile: ProfileModel = {
   id: '',
   name: '',
   product: '',
@@ -43,6 +43,17 @@ const initialProfile = {
   email: '',
   spotify: '',
   type: '',
+}
+
+const initialTrack: TrackModel = {
+  id: '',
+  name: '',
+  previewUrl: '',
+  artists: [],
+  duration: 0,
+  type: '',
+  spotify: '',
+  href: '',
 }
 
 type Items<T> = {
@@ -55,6 +66,7 @@ export default class UserStore {
   playlists: BaseModelWithImage[] = []
   topTracks: TrackModel[] = []
   topArtists: ArtistModel[] = []
+  curTrack: TrackModel = initialTrack
   meta: Meta = Meta.initial
   errorCode: StatusCode | null = null
 
@@ -80,6 +92,7 @@ export default class UserStore {
       fetchTopArtists: action.bound,
       fetchAlbum: action.bound,
       fetchPlaylist: action.bound,
+      setTrack: action.bound,
     })
   }
 
@@ -147,6 +160,10 @@ export default class UserStore {
     !data
       ? (this.profile = initialProfile)
       : (this.profile = normalizeProfileModel(data))
+  }
+
+  setTrack(track: TrackModel): void {
+    this.curTrack = track
   }
 
   async fetchPlaylists(force: boolean = false): Promise<void> {

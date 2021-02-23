@@ -1,19 +1,32 @@
 import React, { FC } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import classNames from 'classnames'
 
 import './SideBarRow.scss'
 import { SideBarLabel } from '../config'
 
-const SideBarRow: FC<SideBarLabel> = ({ title, img, link }) => {
+const SideBarRow: FC<SideBarLabel> = ({
+  title,
+  clickedImg,
+  defaultImg,
+  link,
+}) => {
+  const location = useLocation()
+
   return (
-    <NavLink
-      className="sideBarRow"
+    <Link
+      className={classNames('sideBarRow', {
+        'sideBarRow-active': location.pathname === link,
+      })}
       to={link}
-      activeClassName={'sideBarRow-active'}
     >
-      <img src={img} className="sideBarRow__icon" alt={title.toLowerCase()} />
+      <img
+        src={location.pathname === link ? clickedImg : defaultImg}
+        className="sideBarRow__icon"
+        alt={title.toLowerCase()}
+      />
       <span className="sideBarRow__title">{title}</span>
-    </NavLink>
+    </Link>
   )
 }
 

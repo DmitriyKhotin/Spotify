@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import Searcher from '@components/Searcher'
@@ -8,6 +8,7 @@ import MiniLogo from '@components/MiniLogo'
 import PrivateRoute from '@components/PrivateRoute'
 import { getToken } from '@config/appData'
 import { paths } from '@config/routes'
+import Player from '@components/Player'
 
 import DefaultLayout from './layouts/DefaultLayout'
 import './MainPage.scss'
@@ -28,38 +29,46 @@ const MainPage: FC = () => {
 
   return (
     <>
-      <div className="header">
-        <div className="flex">
-          <div className="header__logo">
+      <div className={'wrapper'}>
+        <div className={'sidebar'}>
+          <div className={'sidebar__logo'}>
             <MiniLogo />
           </div>
-          <Searcher />
+          <div className={'sidebar__menu'}>
+            <SideBar />
+          </div>
         </div>
-        <ProfileBar />
+        <div className={'content'}>
+          <div className="header">
+            <Searcher />
+            <ProfileBar />
+          </div>
+          <div className="main">
+            <div className={'main__layout'}>
+              <PrivateRoute exact path={paths.ROOT}>
+                <DefaultLayout />
+              </PrivateRoute>
+              <PrivateRoute exact path={paths.TOP_TRACKS}>
+                <TopTracksLayout />
+              </PrivateRoute>
+              <PrivateRoute exact path={paths.TOP_ARTISTS}>
+                <TopArtistsLayout />
+              </PrivateRoute>
+              <PrivateRoute exact path={paths.ALBUM}>
+                <AlbumLayout />
+              </PrivateRoute>
+              <PrivateRoute exact path={paths.PLAYLIST}>
+                <PlaylistLayout />
+              </PrivateRoute>
+              <PrivateRoute exact path={paths.PROFILE}>
+                <ProfileLayout />
+              </PrivateRoute>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="main">
-        <SideBar />
-        <div className="main__delimiter" />
-        <div className={'main__layout'}>
-          <PrivateRoute exact path={paths.ROOT}>
-            <DefaultLayout />
-          </PrivateRoute>
-          <PrivateRoute exact path={paths.TOP_TRACKS}>
-            <TopTracksLayout />
-          </PrivateRoute>
-          <PrivateRoute exact path={paths.TOP_ARTISTS}>
-            <TopArtistsLayout />
-          </PrivateRoute>
-          <PrivateRoute exact path={paths.ALBUM}>
-            <AlbumLayout />
-          </PrivateRoute>
-          <PrivateRoute exact path={paths.PLAYLIST}>
-            <PlaylistLayout />
-          </PrivateRoute>
-          <PrivateRoute exact path={paths.PROFILE}>
-            <ProfileLayout />
-          </PrivateRoute>
-        </div>
+      <div className={'player'}>
+        <Player />
       </div>
     </>
   )

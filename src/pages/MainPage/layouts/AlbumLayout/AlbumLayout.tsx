@@ -3,21 +3,18 @@ import { useHistory } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
 import Track from '@components/Track'
-
-import { AlbumModel } from '../../../../store/models/albums'
-import store from '../../../../store/UserStore'
-import Loader from '../../../../components/Loader'
-import Card from '../../../../components/Card'
-import Player from '../../../../components/Player'
-import { TrackModel } from '../../../../store/models/tracks'
-import { Meta } from '../../../../utils/meta'
-import useAuth from '../../../../utils/useAuth'
+import { AlbumModel } from '@store/models/albums'
+import store from '@store/UserStore'
+import Loader from '@components/Loader'
+import Card from '@components/Card'
+import Player from '@components/Player'
+import { Meta } from '@utils/meta'
+import useAuth from '@utils/useAuth'
 
 import style from './AlbumLayout.module.scss'
 
 const AlbumLayout: FC = () => {
   const [album, setAlbum] = useState<AlbumModel>()
-  const [track, setTrack] = useState<TrackModel>()
   const history = useHistory()
 
   //в этом хуке проверка на лоадинг как и в других лейаутах, можно вынести
@@ -79,12 +76,8 @@ const AlbumLayout: FC = () => {
             previewUrl={track.previewUrl}
             href={track.href}
             spotify={track.spotify}
-            onClick={() => setTrack(track)}
           />
         ))}
-      </div>
-      <div className={style.album__player}>
-        {track && track.previewUrl && <Player src={track.previewUrl} />}
       </div>
     </div>
   )

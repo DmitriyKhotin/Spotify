@@ -13,7 +13,6 @@ import style from './PlaylistLayout.module.scss'
 
 const PlaylistLayout: FC = () => {
   const [playlist, setPlaylist] = useState<PlaylistModel>()
-  const [track, setTrack] = useState<TrackModel>()
   const history = useHistory()
 
   useEffect(() => {

@@ -9,17 +9,18 @@ import { mapSideBarLabels, SideBarEnum } from './config'
 const SideBar: FC = () => {
   return (
     <div className="sideBar">
-      <Title title="My top" />
       <div>
         <SideBarRow
-          img={mapSideBarLabels[SideBarEnum.tracks].img}
-          title={mapSideBarLabels[SideBarEnum.tracks].title}
-          link={mapSideBarLabels[SideBarEnum.tracks].link}
+          defaultImg={mapSideBarLabels[SideBarEnum.main].defaultImg}
+          clickedImg={mapSideBarLabels[SideBarEnum.main].clickedImg}
+          title={mapSideBarLabels[SideBarEnum.main].title}
+          link={mapSideBarLabels[SideBarEnum.main].link}
         />
         <SideBarRow
-          img={mapSideBarLabels[SideBarEnum.artists].img}
-          title={mapSideBarLabels[SideBarEnum.artists].title}
-          link={mapSideBarLabels[SideBarEnum.artists].link}
+          defaultImg={mapSideBarLabels[SideBarEnum.search].defaultImg}
+          clickedImg={mapSideBarLabels[SideBarEnum.search].clickedImg}
+          title={mapSideBarLabels[SideBarEnum.search].title}
+          link={mapSideBarLabels[SideBarEnum.search].link}
         />
       </div>
     </div>

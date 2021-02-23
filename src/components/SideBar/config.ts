@@ -1,30 +1,34 @@
 import { paths } from '@config/routes'
 
-import artistsImg from './img/artists.svg'
-import tracksImg from './img/tracks.svg'
+import homeImg from './img/home.svg'
+import homeClickedImg from './img/home-clicked.svg'
+import searchImg from './img/loupe.svg'
 
 export enum SideBarEnum {
-  tracks = 'tracks',
-  artists = 'artists',
+  main = 'Главная',
+  search = 'Поиск',
 }
 
 export type SideBarLabel = {
-  img: string
-  title: string
+  defaultImg: string
+  clickedImg: string
+  title: SideBarEnum
   link: string
 }
 
 export const mapSideBarLabels: Record<SideBarEnum, SideBarLabel> = {
-  [SideBarEnum.tracks]: {
-    img: tracksImg,
-    title: 'Tracks',
-    link: paths.TOP_TRACKS,
+  [SideBarEnum.main]: {
+    defaultImg: homeImg,
+    clickedImg: homeClickedImg,
+    title: SideBarEnum.main,
+    link: paths.ROOT,
   },
-  [SideBarEnum.artists]: {
-    img: artistsImg,
-    title: 'Artists',
-    link: paths.TOP_ARTISTS,
+  [SideBarEnum.search]: {
+    defaultImg: searchImg,
+    clickedImg: searchImg,
+    title: SideBarEnum.search,
+    link: paths.SEARCH,
   },
 }
 
-export const sideBarLabelOrder = [SideBarEnum.tracks, SideBarEnum.artists]
+export const sideBarLabelOrder = [SideBarEnum.main, SideBarEnum.search]

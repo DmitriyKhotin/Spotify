@@ -1,35 +1,54 @@
 @import "src/styles/variables";
 
+.wrapper {
+  display: flex;
+  height: $wrapper-height;
+}
+
+.sidebar {
+  width: 245px;
+  background: $menupage-color;
+  padding-top: 16px;
+
+  &__logo {
+    margin-left: 40px;
+  }
+
+  &__menu {
+    margin-top: 35px;
+  }
+}
+
+.content {
+  padding-left: 60px;
+  flex-grow: 1;
+  background: linear-gradient(180deg, rgba(130, 125, 125, 0.67) 0%, rgba(68, 67, 67, 0.59) 6.56%, rgba(2, 2, 2, 0.56) 15.62%, rgba(33, 32, 32, 0.79) 23.83%, rgba(0, 0, 0, 0.89) 47.19%);
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
-  margin-bottom: 55px;
-
-  &__logo {
-    margin-right: 150px;
-  }
-}
-
-.flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  margin-bottom: 35px;
 }
 
 .main {
   display: flex;
   padding: 0 40px;
-
-  &__delimiter {
-    height: 450px;
-    width: 1px;
-    background-color: $menu-color;
-    margin: 48px 60px 0 52px;
-  }
+  padding-left: 0;
 
   &__layout {
     flex-grow: 1;
   }
+}
+
+.player {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: $wrapper-height;
+  border-top: 4px solid $player-border-color;
+  background: $menupage-color;
 }
