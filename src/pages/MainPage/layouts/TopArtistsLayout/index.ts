@@ -1,1 +1,1 @@
-export {default} from './TopArtistsLayout'
+export { default } from './TopArtistsLayout'

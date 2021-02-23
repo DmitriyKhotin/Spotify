@@ -3,6 +3,6 @@ import { TrackModel } from '../tracks'
 
 export type PlaylistModel = BaseModelWithImage & {
   description: string
-  owner:  string
+  owner: string
   tracks: TrackModel[]
 }

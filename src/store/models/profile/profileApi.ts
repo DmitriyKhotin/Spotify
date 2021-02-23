@@ -1,5 +1,6 @@
-import {ProfileModel} from "./profile";
-import {ImagesApiModel} from "../imagesApi";
+import { ImagesApiModel } from '../imagesApi'
+
+import { ProfileModel } from './profile'
 
 export type ProfileApiModel = {
   id: string
@@ -22,5 +23,5 @@ export const normalizeProfileModel = (
   spotify: profile.external_urls.spotify,
   email: profile.email,
   images: profile.images,
-  product: profile.product
+  product: profile.product,
 })

@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import classNames from 'classnames'
+
 import './ProfileBar.scss'
 import { paths } from '@config/routes'
 
@@ -18,21 +19,34 @@ const ProfileBar: FC = () => {
   }
 
   const setActiveFalsy = () => setActive(false)
-  const setActiveInvert = () => setActive(prevState => !prevState)
+  const setActiveInvert = () => setActive((prevState) => !prevState)
 
   return (
     <div className="profileBar" onBlur={setActiveFalsy}>
       <button
-        className={classNames('profileBar__title', {'profileBar__title-active': active})}
+        className={classNames('profileBar__title', {
+          'profileBar__title-active': active,
+        })}
         onClick={setActiveInvert}
       >
         <p className="profileBar__name">Dmitriy</p>
-        <p className={classNames('profileBar__arrow', active ? 'profileBar__arrow-top' : 'profileBar__arrow-bottom')}/>
+        <p
+          className={classNames(
+            'profileBar__arrow',
+            active ? 'profileBar__arrow-top' : 'profileBar__arrow-bottom'
+          )}
+        />
       </button>
-      {active && <ul className="dropdown-list">
-        <li className="dropdown-list__item" onMouseDown={redirectToProfile}>Profile</li>
-        <li className="dropdown-list__item" onMouseDown={signOut}>Sign out</li>
-      </ul>}
+      {active && (
+        <ul className="dropdown-list">
+          <li className="dropdown-list__item" onMouseDown={redirectToProfile}>
+            Profile
+          </li>
+          <li className="dropdown-list__item" onMouseDown={signOut}>
+            Sign out
+          </li>
+        </ul>
+      )}
     </div>
   )
 }

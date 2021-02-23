@@ -1,10 +1,11 @@
+import { paths } from '@config/routes'
+
 import artistsImg from './img/artists.svg'
 import tracksImg from './img/tracks.svg'
-import {paths} from "@config/routes"
 
 export enum SideBarEnum {
   tracks = 'tracks',
-  artists = 'artists'
+  artists = 'artists',
 }
 
 export type SideBarLabel = {
@@ -17,16 +18,13 @@ export const mapSideBarLabels: Record<SideBarEnum, SideBarLabel> = {
   [SideBarEnum.tracks]: {
     img: tracksImg,
     title: 'Tracks',
-    link: paths.TOP_TRACKS
+    link: paths.TOP_TRACKS,
   },
   [SideBarEnum.artists]: {
     img: artistsImg,
     title: 'Artists',
-    link: paths.TOP_ARTISTS
-  }
+    link: paths.TOP_ARTISTS,
+  },
 }
 
-export const sideBarLabelOrder = [
-  SideBarEnum.tracks,
-  SideBarEnum.artists
-]
+export const sideBarLabelOrder = [SideBarEnum.tracks, SideBarEnum.artists]

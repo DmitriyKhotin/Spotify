@@ -2,9 +2,7 @@ import React from 'react'
 import NativeLoader from 'react-loader-spinner'
 import './Loader.scss'
 
-
 const Loader = () => {
-
   return (
     <div className="loader">
       <NativeLoader
@@ -15,8 +13,7 @@ const Loader = () => {
         timeout={10000}
       />
     </div>
-
-  );
+  )
 }
 
 export default Loader

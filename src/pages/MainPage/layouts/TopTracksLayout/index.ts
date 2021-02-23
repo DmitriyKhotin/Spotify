@@ -1,1 +1,1 @@
-export {default} from './TopTracksLayout'
+export { default } from './TopTracksLayout'

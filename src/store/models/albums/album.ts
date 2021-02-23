@@ -1,6 +1,5 @@
 import { BaseModelWithImage } from '../extends'
-import {TrackModel} from "../tracks";
-import { ArtistModel } from '../artists'
+import { TrackModel } from '../tracks'
 
 export type AlbumModel = BaseModelWithImage & {
   albumType: string
@@ -13,4 +12,3 @@ export type AlbumModel = BaseModelWithImage & {
   popularity: number
   tracks: TrackModel[]
 }
-

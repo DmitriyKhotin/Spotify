@@ -5,5 +5,5 @@ export const paths = {
   TOP_ARTISTS: '/top/artists',
   ALBUM: '/albums/:id',
   PLAYLIST: '/playlists/:id',
-  PROFILE: '/profile'
+  PROFILE: '/profile',
 }

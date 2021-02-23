@@ -1,10 +1,9 @@
-import React, {FC} from 'react'
-import './SignInButton.scss'
-import {authHref} from "@config/appData";
+import React, { FC } from 'react'
 
+import './SignInButton.scss'
+import { authHref } from '@config/appData'
 
 const SignInButton: FC = () => {
-
   const logIn = () => {
     window.location.href = authHref
   }

@@ -1,8 +1,11 @@
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+
 import store from '@store/UserStore'
-import { StatusCode } from './apiTypes'
+
 import { paths } from '../config/routes'
+
+import { StatusCode } from './apiTypes'
 
 const useAuth = () => {
   const history = useHistory()

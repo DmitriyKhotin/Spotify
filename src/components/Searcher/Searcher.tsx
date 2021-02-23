@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, useRef, useState} from 'react'
+import React, { ChangeEvent, FC, useRef, useState } from 'react'
 import './Searcher.scss'
 
 const Searcher: FC = () => {
@@ -20,13 +20,16 @@ const Searcher: FC = () => {
         type="text"
         placeholder="Search"
         value={value}
-        onChange={(event: ChangeEvent<HTMLInputElement>) => setValue(event.target.value)}
+        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+          setValue(event.target.value)
+        }
         spellCheck={false}
       />
-      {!value
-        ? <label className="searcher__label loupe"/>
-        : <button className="searcher__label cross" onClick={clearInput}/>
-      }
+      {!value ? (
+        <label className="searcher__label loupe" />
+      ) : (
+        <button className="searcher__label cross" onClick={clearInput} />
+      )}
     </div>
   )
 }

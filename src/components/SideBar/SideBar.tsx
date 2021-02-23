@@ -1,14 +1,15 @@
-import React, {FC, memo} from 'react'
+import React, { FC, memo } from 'react'
+
 import './SideBar.scss'
-import Title from "@components/Title";
-import SideBarRow from "./SideBarRow";
-import {mapSideBarLabels, SideBarEnum} from "./config";
+import Title from '@components/Title'
+
+import SideBarRow from './SideBarRow'
+import { mapSideBarLabels, SideBarEnum } from './config'
 
 const SideBar: FC = () => {
-
   return (
     <div className="sideBar">
-      <Title title="My top"/>
+      <Title title="My top" />
       <div>
         <SideBarRow
           img={mapSideBarLabels[SideBarEnum.tracks].img}

@@ -11,7 +11,7 @@ export const apiUrls = {
     playlists: (): string => userApi('/playlists'),
     profile: (): string => userApi(''),
     topTracks: (): string => userTopApi('/tracks'),
-    topArtists: (): string => userTopApi('/artists')
+    topArtists: (): string => userTopApi('/artists'),
   },
   model: (path: string): string => modelApi(path),
 }

@@ -1,17 +1,18 @@
 import React, { FC, memo, useCallback, useMemo } from 'react'
-import track from './Track.module.scss'
-import { TrackModel } from '../../store/models/tracks'
 
-interface IProps extends TrackModel{
+import { TrackModel } from '@store/models/tracks'
+
+import track from './Track.module.scss'
+
+interface IProps extends TrackModel {
   index: number
   onClick: () => void
 }
 
-const Track: FC<IProps> = ({name, artists, duration, previewUrl, id, index, onClick}) => {
-
+const Track: FC<IProps> = ({ name, artists, duration, index, onClick }) => {
   const convertMiliSecToMinSec = () => {
-    const min = Math.floor(duration/1000/60)
-    const sec = Math.floor(duration/1000 % 60)
+    const min = Math.floor(duration / 1000 / 60)
+    const sec = Math.floor((duration / 1000) % 60)
     return sec > 9 ? `${min}:${sec}` : `${min}:0${sec}`
   }
 

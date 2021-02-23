@@ -1,5 +1,6 @@
-import { BaseModel } from './extends'
 import { ImagesApiModel } from '../imagesApi'
+
+import { BaseModel } from './extends'
 
 export type BaseApiModel = {
   id: string
@@ -15,9 +16,7 @@ export type BaseApiModelWithImage = BaseApiModel & {
   images: ImagesApiModel[]
 }
 
-export const normalizeBaseModel = (
-  data: BaseApiModel
-): BaseModel => ({
+export const normalizeBaseModel = (data: BaseApiModel): BaseModel => ({
   id: data.id,
   name: data.name,
   spotify: data.external_urls?.spotify,
