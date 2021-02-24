@@ -18,7 +18,7 @@ const Searcher: FC = () => {
         ref={inputRef}
         className="searcher__input"
         type="text"
-        placeholder="Search"
+        placeholder="Поиск"
         value={value}
         onChange={(event: ChangeEvent<HTMLInputElement>) =>
           setValue(event.target.value)

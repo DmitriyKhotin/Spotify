@@ -1,15 +1,30 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import { observer } from 'mobx-react-lite'
-import ReactAudioPlayer from 'react-audio-player'
 
 import store from '@store/UserStore'
 
 import style from './PLayer.module.scss'
 
 const Player: FC = () => {
-  console.log(store.curTrack.previewUrl)
+  const ref = useRef<HTMLAudioElement>()
+
+  useEffect(() => {
+    if (ref && !store.curTrack.isPlaying) {
+      console.log(ref)
+      ref.current!.pause()
+    }
+    if (ref && store.curTrack.isPlaying) {
+      ref.current!.play()
+    }
+  }, [store.curTrack.isPlaying])
   return (
-    <ReactAudioPlayer src={store.curTrack.previewUrl || ''} autoPlay controls />
+    <audio
+      // @ts-ignore
+      ref={ref}
+      src={store.curTrack.previewUrl || ''}
+      autoPlay
+      controls
+    />
   )
 }
 

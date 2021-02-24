@@ -26,9 +26,8 @@ const Track: FC<IProps> = ({
     return sec > 9 ? `${min}:${sec}` : `${min}:0${sec}`
   }
 
-  const memoDuration = useMemo(() => convertMiliSecToMinSec(), [duration])
-  const onClickMemo = useCallback(
-    () =>
+  const onclick = () => {
+    if (previewUrl) {
       store.setTrack({
         name,
         artists,
@@ -38,9 +37,14 @@ const Track: FC<IProps> = ({
         href,
         previewUrl,
         type,
-      }),
-    []
-  )
+        isPlaying: !store.curTrack.isPlaying,
+      })
+    } else {
+      alert('Выбранный трек не воспроизводится')
+    }
+  }
+  const memoDuration = useMemo(() => convertMiliSecToMinSec(), [duration])
+  const onClickMemo = useCallback(onclick, [])
 
   return (
     <div className={track.track} onClick={onClickMemo}>

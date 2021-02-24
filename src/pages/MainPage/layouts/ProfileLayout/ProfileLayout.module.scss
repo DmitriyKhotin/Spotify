@@ -1,0 +1,22 @@
+@import "src/styles/mixins";
+
+.profile {
+
+  &__header {
+
+  }
+
+  &__avatar {
+    border-radius: 50%;
+    @include square(192px);
+    background: #2D2929;
+    box-shadow: 5px 0 19px 6px rgba(41, 41, 41, 0.25);
+
+    &_icon {
+      background: url('./img/avatar.svg') #2D2929;
+      @include icon_centre;
+    }
+  }
+
+
+}

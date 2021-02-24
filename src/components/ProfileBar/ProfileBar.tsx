@@ -40,10 +40,10 @@ const ProfileBar: FC = () => {
       {active && (
         <ul className="dropdown-list">
           <li className="dropdown-list__item" onMouseDown={redirectToProfile}>
-            Profile
+            Профиль
           </li>
           <li className="dropdown-list__item" onMouseDown={signOut}>
-            Sign out
+            Выход
           </li>
         </ul>
       )}

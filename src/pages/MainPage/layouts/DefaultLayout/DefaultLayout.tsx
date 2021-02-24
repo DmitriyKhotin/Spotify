@@ -25,8 +25,8 @@ const DefaultLayout: FC = () => {
 
   return (
     <div className="defaultLayout">
-      <Carousel title="My albums" data={store.albums} />
-      <Carousel title="My playlists" data={store.playlists} />
+      <Carousel title="Мои альбомы" data={store.albums} />
+      <Carousel title="Мои плейлисты" data={store.playlists} />
     </div>
   )
 }

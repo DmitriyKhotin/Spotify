@@ -39,9 +39,20 @@ const MainPage: FC = () => {
           </div>
         </div>
         <div className={'content'}>
-          <div className="header">
-            <Searcher />
-            <ProfileBar />
+          <div
+            style={
+              history.location.pathname === paths.SEARCH
+                ? { justifyContent: 'space-between' }
+                : { justifyContent: 'flex-end' }
+            }
+            className="header"
+          >
+            <PrivateRoute exact path={paths.SEARCH}>
+              <Searcher />
+            </PrivateRoute>
+            <div className={'header__profile'}>
+              <ProfileBar />
+            </div>
           </div>
           <div className="main">
             <div className={'main__layout'}>
