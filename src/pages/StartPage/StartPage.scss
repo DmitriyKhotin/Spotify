@@ -1,5 +1,8 @@
-.startPage {
+@import '/src/styles/variables';
 
+.startPage {
+  height: 100%;
+  background: $main-background-color;
   &__logo {
     padding: 32px 93px 0;
   }

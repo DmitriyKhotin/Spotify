@@ -7,6 +7,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 8px 8px;
+  margin: 0 40px;
+  margin-left: 60px;
 
   .flex {
     display: flex;
@@ -75,6 +77,26 @@
       @include square(24px);
       margin-right: 21px;
     }
-
   }
+}
+
+.redirect__arrow {
+  margin-right: 20px;
+  background: url("./img/redirect-arrow-gray.svg");
+  @include icon_centre;
+  @include square(20px);
+
+
+  &:hover {
+    background: url("./img/redirect-arrow-white.svg");
+    @include icon_centre;
+    @include square(20px);
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.active {
 }

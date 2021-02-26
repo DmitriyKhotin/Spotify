@@ -6,6 +6,7 @@ import {
 } from '../extends'
 import { ImagesApiModel } from '../imagesApi'
 import { normalizeTrackModel, TrackApiModel } from '../tracks'
+import getColor from '../../../utils/getColor'
 
 import { PlaylistModel } from './playlist'
 
@@ -36,6 +37,7 @@ export const normalizePlaylistModel = (
     normalizeTrackModel(track.track)
   ),
   images: playlist.images,
+  color: getColor(playlist.images[0].url),
 })
 
 export const normalizePlaylistsModel = (
@@ -44,4 +46,5 @@ export const normalizePlaylistsModel = (
   playlists.map((playlist: BaseApiModelWithImage) => ({
     ...normalizeBaseModel(playlist),
     images: playlist.images,
+    color: getColor(playlist.images[0].url),
   }))

@@ -1,60 +1,62 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
+const path = require('path')
+
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 
-const srcPath = path.resolve(__dirname, 'src');
-const isProd = process.env.NODE_ENV === 'production';
+const srcPath = path.resolve(__dirname, 'src')
+const isProd = process.env.NODE_ENV === 'production'
 
 const plugins = [
   new HtmlWebpackPlugin({
-    template: path.join(srcPath, 'index.html')
+    template: path.join(srcPath, 'index.html'),
   }),
   new CopyPlugin({
     patterns: [
       {
         from: path.resolve(__dirname, 'src/favicon.ico'),
-        to: path.resolve(__dirname, 'dist')
-      }
-    ]
+        to: path.resolve(__dirname, 'dist'),
+      },
+    ],
   }),
   !isProd && new ReactRefreshWebpackPlugin(),
   new MiniCssExtractPlugin({
-    filename: '[name]-[hash].css'
+    filename: '[name]-[hash].css',
   }),
-  new ForkTsCheckerPlugin()
-].filter(Boolean);
+  new ForkTsCheckerPlugin(),
+].filter(Boolean)
 
-const  getCssRules = (withModules) => {
+const getCssRules = (withModules) => {
   return [
     {
       loader: MiniCssExtractPlugin.loader,
       options: {
-        publicPath: ''
-      }
+        publicPath: '',
+      },
     },
-    withModules ? {
-      loader: "css-loader",
-      options: {
-        modules:{
-          localIdentName: !isProd ? '[path][name]__[local]' : '[hash:base64]'
+    withModules
+      ? {
+          loader: 'css-loader',
+          options: {
+            modules: {
+              localIdentName: !isProd
+                ? '[path][name]__[local]'
+                : '[hash:base64]',
+            },
+          },
         }
-      }
-    } : 'css-loader',
+      : 'css-loader',
     {
-      loader: "postcss-loader",
+      loader: 'postcss-loader',
       options: {
         postcssOptions: {
-          plugins: [
-            'autoprefixer'
-          ],
+          plugins: ['autoprefixer'],
         },
       },
-    }
-    ,
-    'sass-loader'
+    },
+    'sass-loader',
   ]
 }
 
@@ -62,47 +64,47 @@ module.exports = {
   entry: ['@babel/polyfill', path.join(srcPath, 'index.tsx')],
   devtool: 'eval-source-map',
   output: {
-    path:  path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: "/"
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.jsx', '.js', '.tsx', '.ts'],
     alias: {
-      '@components' : path.resolve(srcPath, 'components'),
-      '@store' : path.resolve(srcPath, 'store'),
+      '@components': path.resolve(srcPath, 'components'),
+      '@store': path.resolve(srcPath, 'store'),
       '@utils': path.resolve(srcPath, 'utils'),
       '@config': path.resolve(srcPath, 'config'),
       '@pages': path.resolve(srcPath, 'pages'),
-      '@styles': path.resolve(srcPath, 'styles')
-    }
+      '@styles': path.resolve(srcPath, 'styles'),
+    },
   },
   target: isProd ? 'browserslist' : 'web',
   module: {
     rules: [
       {
         test: /\.([tj])sx?$/,
-        use: 'babel-loader'
+        use: 'babel-loader',
       },
       {
         test: /\.module\.s?css$/,
-        use: getCssRules(true)
+        use: getCssRules(true),
       },
       {
         test: /\.s?css$/,
         exclude: /\.module\.s?css$/,
-        use: getCssRules(false)
+        use: getCssRules(false),
       },
       {
         test: /\.(png|svg|jpg)$/,
         type: 'asset',
         parser: {
           dataUrlCondition: {
-            maxSize: 3 * 1024 // 3kb
-          }
-        }
-      }
-    ]
+            maxSize: 3 * 1024, // 3kb
+          },
+        },
+      },
+    ],
   },
   plugins,
   devServer: {
@@ -110,6 +112,6 @@ module.exports = {
     port: 3000,
     hot: true,
     inline: true,
-    historyApiFallback: true
-  }
+    historyApiFallback: true,
+  },
 }

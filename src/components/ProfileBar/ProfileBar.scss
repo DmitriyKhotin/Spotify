@@ -33,15 +33,14 @@
   &__arrow {
     @include square(20px);
     @include icon_centre;
-    transition: ease-out 0.2s;
-
+    transition: all 0.4s ease-out ;
+    background: url("img/arrow-bottom.svg");
 
     &-bottom {
-      background: url("img/arrow-bottom.svg");
+      transform: rotate(0);
     }
 
     &-top {
-      background: url("img/arrow-bottom.svg");
       transform: rotate(180deg);
     }
   }

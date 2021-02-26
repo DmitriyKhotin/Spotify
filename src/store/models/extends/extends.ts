@@ -10,4 +10,5 @@ export type BaseModel = {
 
 export type BaseModelWithImage = BaseModel & {
   images: ImagesApiModel[]
+  color: Promise<string>
 }

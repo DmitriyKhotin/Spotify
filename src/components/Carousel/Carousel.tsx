@@ -9,6 +9,8 @@ import Title from '@components/Title'
 import Card from '@components/Card'
 import { BaseModelWithImage } from '@store/models/extends'
 
+import store from '../../store/RootStore'
+
 const Carousel: FC<{ title: string; data: BaseModelWithImage[] }> = ({
   title,
   data,
@@ -21,14 +23,21 @@ const Carousel: FC<{ title: string; data: BaseModelWithImage[] }> = ({
   //   slidesToScroll: 3
   // };
 
+  const setColor = (color: Promise<string>) => {
+    color ? color.then((hex) => store.userStore.setColor(hex)) : ''
+  }
+
   return (
     <div className="carousel">
       <Title title={title} />
       <div className="carousel__slider">
         {data.map((value: BaseModelWithImage) => (
-          <div key={value.id} className={'carousel__slider_cursor-pointer'}>
+          <div key={value.id} className={'carousel__slider__hovered'}>
             <Link to={`${value.type}s/${value.id}`}>
-              <Card src={value.images[0].url} />
+              <Card
+                src={value.images[0].url}
+                // setColor={() => setColor(value.color)}
+              />
             </Link>
           </div>
         ))}

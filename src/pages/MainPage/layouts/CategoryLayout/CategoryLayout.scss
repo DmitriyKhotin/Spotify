@@ -1,12 +1,15 @@
 @import 'src/styles/variables';
 @import 'src/styles/mixins';
 
-.album {
-
+.category {
+  background: $main-background-color;
+  min-height: 100%;
   &__header {
     display: flex;
+    padding: 0 40px;
     padding-bottom: 30px;
     border-bottom: 1px solid $signature-color;
+    padding-left: 60px;
 
     &__title {
       display: flex;
@@ -17,13 +20,14 @@
 
       &__item {
         display: flex;
+        margin-bottom: 14px;
 
         &_size-middle {
           @include item(32px, $menu-color);
         }
 
         &_size-big {
-          @include item(58px, $menu-color);
+          @include item(44px, $menu-color);
         }
 
         &_color-white {

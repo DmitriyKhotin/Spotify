@@ -6,14 +6,13 @@
   "scripts": {
     "start": "NODE_ENV=development npx webpack serve --mode development",
     "build": "NODE_ENV=production npx webpack --mode production",
-    "lint:fix": "eslint --fix --ext .ts,.tsx ."
+    "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "@types/react-audio-player": "^0.11.0",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "eslint": "^7.20.0",
+    "fast-average-color": "^6.3.0",
     "mobx": "^6.1.5",
     "mobx-react-lite": "^3.2.0",
     "normalize.css": "^8.0.1",
@@ -29,6 +28,7 @@
     "@babel/core": "^7.12.16",
     "@babel/plugin-proposal-optional-chaining": "^7.12.16",
     "@babel/plugin-transform-async-to-generator": "^7.12.13",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.12.16",
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.12.16",
@@ -36,6 +36,7 @@
     "@types/classnames": "^2.2.11",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.1",
+    "@types/react-audio-player": "^0.11.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.15.0",

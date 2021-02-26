@@ -20,25 +20,29 @@
 }
 
 .content {
-  padding-left: 60px;
   flex-grow: 1;
-  background: linear-gradient(180deg, rgba(130, 125, 125, 0.67) 0%, rgba(68, 67, 67, 0.52) 6.84%, rgba(2, 2, 2, 0.43) 17.15%, rgba(33, 32, 32, 0.5) 29.56%, rgba(11, 11, 11, 0.56) 47.31%, rgba(0, 0, 0, 0.89) 53.8%);
+  overflow-y: auto;
 }
 
 .header {
   display: flex;
-  height: $searcher-height;
   align-items: center;
-  margin: 23px 40px 42px;
+  padding: 23px 40px 42px;
+  padding-left: 60px;
+  background: $main-background-color;
+
+  &__profile {
+    margin-left: auto;
+  }
 }
 
 .main {
   display: flex;
-  margin: 0 40px;
-  padding-left: 0;
+  height: $wrapper-height - 113px;
 
   &__layout {
     flex-grow: 1;
+
   }
 }
 
@@ -50,4 +54,7 @@
   top: $wrapper-height;
   border-top: 4px solid $player-border-color;
   background: $menupage-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

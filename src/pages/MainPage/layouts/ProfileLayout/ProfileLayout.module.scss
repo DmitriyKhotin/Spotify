@@ -1,9 +1,13 @@
 @import "src/styles/mixins";
-
+@import "src/styles/variables";
 .profile {
-
+  padding-top: 16px;
+  background: $main-background-color;
   &__header {
-
+    display: flex;
+    align-items: flex-end;
+    padding: 0 40px;
+    padding-left: 60px;
   }
 
   &__avatar {
@@ -11,6 +15,7 @@
     @include square(192px);
     background: #2D2929;
     box-shadow: 5px 0 19px 6px rgba(41, 41, 41, 0.25);
+    margin-right: 30px;
 
     &_icon {
       background: url('./img/avatar.svg') #2D2929;
@@ -18,5 +23,36 @@
     }
   }
 
+  &__topTracks {
+    margin-top: 40px;
+  }
 
+  &__topArtists {
+    margin-top: 20px;
+  }
+}
+
+.header {
+
+  &__name {
+    color: $sideBarRow-color;
+    line-height: 100%;
+    font-size: 44px;
+    margin-bottom: 40px;
+  }
+
+  &__email {
+    color: $menu-color;
+    margin-bottom: 15px;
+    line-height: 100%;
+    font-size: 24px;
+  }
+}
+
+.title {
+  color: $sideBarRow-color;
+  line-height: 100%;
+  font-size: 26px;
+  margin-bottom: 20px;
+  padding-left: 60px;
 }

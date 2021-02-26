@@ -24,4 +24,5 @@ export const normalizeProfileModel = (
   email: profile.email,
   images: profile.images,
   product: profile.product,
+  href: '',
 })

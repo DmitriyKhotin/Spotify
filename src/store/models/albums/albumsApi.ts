@@ -4,6 +4,7 @@ import {
   normalizeBaseModel,
 } from '../extends'
 import { normalizeTracksModel, TrackApiModel } from '../tracks'
+import getColor from '../../../utils/getColor'
 
 import { AlbumModel } from './album'
 
@@ -29,19 +30,22 @@ export type AlbumApiModel = BaseApiModelWithImage & {
   artists: AlbumArtist[]
 }
 
-export const normalizeAlbumModel = (album: AlbumApiModel): AlbumModel => ({
-  ...normalizeBaseModel(album),
-  albumType: album.album_type,
-  tracks: normalizeTracksModel(album.tracks.items),
-  totalTracks: album.total_tracks,
-  popularity: album.popularity,
-  artist: {
-    name: album.artists[0].name,
-    id: album.artists[0].id,
-  },
-  releaseDate: album.release_date,
-  images: album.images,
-})
+export const normalizeAlbumModel = (album: AlbumApiModel): AlbumModel => {
+  return {
+    ...normalizeBaseModel(album),
+    albumType: album.album_type,
+    tracks: normalizeTracksModel(album.tracks.items),
+    totalTracks: album.total_tracks,
+    popularity: album.popularity,
+    artist: {
+      name: album.artists[0].name,
+      id: album.artists[0].id,
+    },
+    releaseDate: album.release_date,
+    images: album.images,
+    color: getColor(album.images[0].url),
+  }
+}
 
 export const normalizeAlbumsModel = (
   albums: ResponseAlbumApiModel[]
@@ -49,4 +53,5 @@ export const normalizeAlbumsModel = (
   albums.map((album: ResponseAlbumApiModel) => ({
     ...normalizeBaseModel(album.album),
     images: album.album.images,
+    color: getColor(album.album.images[0].url),
   }))

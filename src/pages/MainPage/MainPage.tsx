@@ -1,5 +1,6 @@
-import React, { FC, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import React, { FC } from 'react'
+import { useHistory, Switch, Redirect } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
 
 import Searcher from '@components/Searcher'
 import SideBar from '@components/SideBar'
@@ -12,11 +13,11 @@ import Player from '@components/Player'
 
 import DefaultLayout from './layouts/DefaultLayout'
 import './MainPage.scss'
-import TopTracksLayout from './layouts/TopTracksLayout'
-import TopArtistsLayout from './layouts/TopArtistsLayout'
-import AlbumLayout from './layouts/AlbumLayout'
-import PlaylistLayout from './layouts/PlaylistLayout'
+import CategoryLayout from './layouts/CategoryLayout'
 import ProfileLayout from './layouts/ProfileLayout'
+import SearchLayout from './layouts/SearchLayout'
+
+import store from '../../store/RootStore'
 
 const MainPage: FC = () => {
   const history = useHistory()
@@ -39,41 +40,55 @@ const MainPage: FC = () => {
           </div>
         </div>
         <div className={'content'}>
+          {history.location.pathname !== paths.PROFILE && (
+            <div
+              style={
+                history.location.pathname.includes('albums') ||
+                history.location.pathname.includes('playlists')
+                  ? {
+                      backgroundColor: store.userStore.color,
+                    }
+                  : {}
+              }
+              className="header"
+            >
+              <PrivateRoute path={paths.SEARCH}>
+                <Searcher />
+              </PrivateRoute>
+              <div className={'header__profile'}>
+                <ProfileBar />
+              </div>
+            </div>
+          )}
           <div
             style={
-              history.location.pathname === paths.SEARCH
-                ? { justifyContent: 'space-between' }
-                : { justifyContent: 'flex-end' }
+              history.location.pathname !== paths.PROFILE &&
+              !history.location.pathname.includes('albums') &&
+              !history.location.pathname.includes('playlists')
+                ? { background: 'rgba(0, 0, 0, 0.74)' }
+                : {}
             }
-            className="header"
+            className="main"
           >
-            <PrivateRoute exact path={paths.SEARCH}>
-              <Searcher />
-            </PrivateRoute>
-            <div className={'header__profile'}>
-              <ProfileBar />
-            </div>
-          </div>
-          <div className="main">
             <div className={'main__layout'}>
-              <PrivateRoute exact path={paths.ROOT}>
-                <DefaultLayout />
-              </PrivateRoute>
-              <PrivateRoute exact path={paths.TOP_TRACKS}>
-                <TopTracksLayout />
-              </PrivateRoute>
-              <PrivateRoute exact path={paths.TOP_ARTISTS}>
-                <TopArtistsLayout />
-              </PrivateRoute>
-              <PrivateRoute exact path={paths.ALBUM}>
-                <AlbumLayout />
-              </PrivateRoute>
-              <PrivateRoute exact path={paths.PLAYLIST}>
-                <PlaylistLayout />
-              </PrivateRoute>
-              <PrivateRoute exact path={paths.PROFILE}>
-                <ProfileLayout />
-              </PrivateRoute>
+              <Switch>
+                <PrivateRoute exact path={paths.ROOT}>
+                  <DefaultLayout />
+                </PrivateRoute>
+                <PrivateRoute exact path={paths.ALBUM}>
+                  <CategoryLayout />
+                </PrivateRoute>
+                <PrivateRoute exact path={paths.PLAYLIST}>
+                  <CategoryLayout />
+                </PrivateRoute>
+                <PrivateRoute exact path={paths.PROFILE}>
+                  <ProfileLayout />
+                </PrivateRoute>
+                <PrivateRoute path={paths.SEARCH}>
+                  <SearchLayout />
+                </PrivateRoute>
+                <Redirect to={paths.ROOT} />
+              </Switch>
             </div>
           </div>
         </div>
@@ -85,4 +100,4 @@ const MainPage: FC = () => {
   )
 }
 
-export default MainPage
+export default observer(MainPage)

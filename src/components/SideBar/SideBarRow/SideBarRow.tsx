@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useCallback, useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import classNames from 'classnames'
 
@@ -16,7 +16,7 @@ const SideBarRow: FC<SideBarLabel> = ({
   return (
     <Link
       className={classNames('sideBarRow', {
-        'sideBarRow-active': location.pathname === link,
+        'sideBarRow-active': location.pathname[1] === link[1],
       })}
       to={link}
     >

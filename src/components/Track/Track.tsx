@@ -1,7 +1,11 @@
-import React, { FC, memo, useCallback, useMemo } from 'react'
+import React, { FC, memo, useCallback, useMemo, useState } from 'react'
+import Loader from 'react-loader-spinner'
+import classNames from 'classnames'
+import { observer } from 'mobx-react-lite'
 
-import { TrackModel } from '@store/models/tracks'
-import store from '@store/UserStore'
+import store from '@store/RootStore'
+import { TrackModel, ArtistModel } from '@store/models'
+import { convertMiliSecToMinSec } from '@utils/convertMiliSecToMinSec'
 
 import track from './Track.module.scss'
 
@@ -20,15 +24,11 @@ const Track: FC<IProps> = ({
   type,
   index,
 }) => {
-  const convertMiliSecToMinSec = () => {
-    const min = Math.floor(duration / 1000 / 60)
-    const sec = Math.floor((duration / 1000) % 60)
-    return sec > 9 ? `${min}:${sec}` : `${min}:0${sec}`
-  }
-
-  const onclick = () => {
+  const onclick = (event: MouseEvent) => {
+    event.stopPropagation()
+    console.log(store.userStore.curTrack.id === id)
     if (previewUrl) {
-      store.setTrack({
+      store.userStore.setTrack({
         name,
         artists,
         duration,
@@ -37,31 +37,51 @@ const Track: FC<IProps> = ({
         href,
         previewUrl,
         type,
-        isPlaying: !store.curTrack.isPlaying,
+        isPlaying:
+          store.userStore.curTrack.id === id
+            ? !store.userStore.curTrack.isPlaying
+            : true,
       })
     } else {
       alert('Выбранный трек не воспроизводится')
     }
   }
-  const memoDuration = useMemo(() => convertMiliSecToMinSec(), [duration])
-  const onClickMemo = useCallback(onclick, [])
+  const memoDuration = useMemo(() => convertMiliSecToMinSec(duration), [
+    duration,
+  ])
+  const onClickMemo = useCallback((event) => onclick(event), [])
 
   return (
-    <div className={track.track} onClick={onClickMemo}>
+    <div
+      className={classNames(
+        track.track,
+        store.userStore.curTrack.id === id ? track.active : ''
+      )}
+      onClick={onClickMemo}
+    >
       <div className={track.flex}>
         <p className={track.track__number}>{index}</p>
         <div>
           <p className={track.track__title}>{name}</p>
           <div className={track.track__authors}>
-            <p className={track.author}>{artists[0].name}</p>
-            {/*<div className={track.miniDot}/>*/}
-            {/*<p className={track.author}>Sensato</p>*/}
+            {artists.map((artist: ArtistModel) => (
+              <p key={artist.id} className={track.author}>
+                {artist.name}
+              </p>
+            ))}
           </div>
         </div>
       </div>
-      <p className={track.track__duration}>{memoDuration}</p>
+      <div className={track.flex}>
+        <a
+          className={track.redirect__arrow}
+          href={spotify || ''}
+          onClick={(event) => event.stopPropagation()}
+        />
+        <p className={track.track__duration}>{memoDuration}</p>
+      </div>
     </div>
   )
 }
 
-export default memo(Track)
+export default observer(Track)

@@ -1,5 +1,6 @@
 import { BaseApiModel, normalizeBaseModel } from '../extends'
 import { ImagesApiModel } from '../imagesApi'
+import getColor from '../../../utils/getColor'
 
 import { ArtistModel } from './artist'
 
@@ -22,4 +23,7 @@ export const normalizeArtistsModel = (
         ? artist.followers.total
         : null,
     popularity: artist.popularity,
+    color: artist.images
+      ? getColor(artist.images[0].url)
+      : new Promise((resolve) => resolve('')),
   }))

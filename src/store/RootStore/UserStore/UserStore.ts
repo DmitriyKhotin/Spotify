@@ -1,5 +1,6 @@
 import {
   action,
+  computed,
   IReactionDisposer,
   makeAutoObservable,
   observable,
@@ -33,7 +34,7 @@ import {
   ResponseAlbumApiModel,
   TrackApiModel,
   TrackModel,
-} from '../models'
+} from '../../models'
 
 const initialProfile: ProfileModel = {
   id: '',
@@ -43,6 +44,7 @@ const initialProfile: ProfileModel = {
   email: '',
   spotify: '',
   type: '',
+  href: '',
 }
 
 interface Track extends TrackModel {
@@ -74,16 +76,19 @@ export default class UserStore {
   curTrack: Track = initialTrack
   meta: Meta = Meta.initial
   errorCode: StatusCode | null = null
+  color: string | undefined
 
   constructor() {
     makeAutoObservable(this, {
       profile: observable,
+      color: observable,
       albums: observable,
       playlists: observable,
       topTracks: observable,
       topArtists: observable,
       meta: observable,
       errorCode: observable,
+      setColor: action.bound,
       fetch: action.bound,
       setTopArtists: action.bound,
       setTopTracks: action.bound,
@@ -98,9 +103,13 @@ export default class UserStore {
       fetchAlbum: action.bound,
       fetchPlaylist: action.bound,
       setTrack: action,
+      topTracksNotRepeated: computed,
     })
   }
 
+  setColor(color: string) {
+    this.color = color
+  }
   async fetch<T>(
     callback: (value?: T) => void,
     url: string,
@@ -261,6 +270,21 @@ export default class UserStore {
     return normalizePlaylistModel(data!)
   }
 
+  get topTracksNotRepeated(): TrackModel[] {
+    const filteredTracks: TrackModel[] = [this.topTracks[0]]
+
+    this.topTracks.forEach((track: TrackModel) => {
+      let found: Boolean = false
+
+      filteredTracks.forEach((filteredTrack) =>
+        filteredTrack.previewUrl === track.previewUrl ? (found = true) : ''
+      )
+
+      !found ? filteredTracks.push(track) : ''
+    })
+
+    return filteredTracks
+  }
   metaChangedReaction: IReactionDisposer = reaction(
     () => this.meta,
     (value) => {

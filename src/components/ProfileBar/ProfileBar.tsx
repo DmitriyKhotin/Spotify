@@ -23,7 +23,7 @@ const ProfileBar: FC = () => {
 
   return (
     <div className="profileBar" onBlur={setActiveFalsy}>
-      <button
+      <div
         className={classNames('profileBar__title', {
           'profileBar__title-active': active,
         })}
@@ -36,7 +36,7 @@ const ProfileBar: FC = () => {
             active ? 'profileBar__arrow-top' : 'profileBar__arrow-bottom'
           )}
         />
-      </button>
+      </div>
       {active && (
         <ul className="dropdown-list">
           <li className="dropdown-list__item" onMouseDown={redirectToProfile}>
