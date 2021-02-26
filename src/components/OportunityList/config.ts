@@ -3,8 +3,8 @@ type Oportunity = {
 }
 
 export const oportunities: Oportunity[] = [
-  { title: "Get an Album's Tracks" },
-  { title: 'Get Multiple Albums' },
-  { title: 'Get Yours Top Artists and Tracks' },
-  { title: 'Change a Playlist\'s Details' },
+  { title: 'Послушать треки' },
+  { title: 'Просмотреть альбомы' },
+  { title: 'Просмотреть плейлисты' },
+  { title: 'Просмотреть профиль' },
 ]
