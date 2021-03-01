@@ -1,9 +1,9 @@
 @import "src/styles/mixins";
 
 .card {
-  margin-right: 10px;
   @include square(180px);
   border-radius: 50%;
   @include square(180px);
   @include icon_centre;
+  margin: auto;
 }

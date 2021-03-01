@@ -1,12 +1,13 @@
-import { makeAutoObservable, observable, runInAction, toJS } from 'mobx'
+import { makeAutoObservable, observable, runInAction } from 'mobx'
 
-import { Meta } from '../../../utils/meta'
-import { getRequest } from '../../../utils/getRequest'
-import { StatusCode } from '../../../utils/apiTypes'
+import { TrackModel, normalizeTracksModel } from '@store/models'
+import { Meta } from '@utils/meta'
+import { getRequest } from '@utils/getRequest'
+import { StatusCode } from '@utils/apiTypes'
+import { apiUrls } from '@config/apiUrls'
 
 export default class SearchStore {
-  //@ts-ignore
-  tracks
+  tracks: TrackModel[] = []
   meta: Meta = Meta.initial
   errorCode: StatusCode | null = null
   constructor() {
@@ -17,15 +18,17 @@ export default class SearchStore {
     })
   }
 
-  async fetch(url: string): Promise<void> {
+  async fetch(query: string): Promise<void> {
     if (this.meta === Meta.loading) {
       return
     }
-    console.log(url)
+    console.log(query)
     this.meta = Meta.loading
     this.tracks = []
 
-    const { errorCode, data } = await getRequest<any>(url)
+    const { errorCode, data } = await getRequest<any>(
+      `${apiUrls.search()}?q=${query}&type=track`
+    )
 
     if (errorCode) {
       this.meta = Meta.error
@@ -36,7 +39,11 @@ export default class SearchStore {
     runInAction(() => {
       this.meta = Meta.success
       this.errorCode = null
-      console.log(toJS(data))
+      this.tracks = normalizeTracksModel(data.tracks.items)
     })
+  }
+
+  setTracksVoid() {
+    this.tracks = []
   }
 }

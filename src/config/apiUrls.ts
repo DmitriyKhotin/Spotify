@@ -14,4 +14,5 @@ export const apiUrls = {
     topArtists: (): string => userTopApi('/artists'),
   },
   model: (path: string): string => modelApi(path),
+  search: (): string => modelApi('/search'),
 }

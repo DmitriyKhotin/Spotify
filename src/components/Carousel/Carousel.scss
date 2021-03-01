@@ -1,16 +1,25 @@
 .carousel {
   padding: 0 40px;
   padding-left: 60px;
+  margin-bottom: 30px;
 
   &__slider {
-    display: flex;
-    justify-content: space-between;
+  margin-left: 24px;
 
-    &_hovered {
+    & .slick-track {
+      margin: 0;
+    }
+
+    &__hovered {
+
       &:hover {
         cursor: pointer;
       }
     }
+  }
+
+  &__card__margin_zero .card {
+    margin: 0;
   }
 
 }

@@ -9,13 +9,16 @@ import { StatusCode } from './apiTypes'
 
 const useAuth = () => {
   const history = useHistory()
-
+  console.log(store.userStore.errorCode)
   useEffect(() => {
-    if (store.userStore.errorCode === StatusCode.unauthorized) {
+    if (
+      store.userStore.errorCode === StatusCode.unauthorized ||
+      store.searchStore.errorCode === StatusCode.unauthorized
+    ) {
       localStorage.removeItem('token')
       history.push(paths.LOGIN)
     }
-  }, [store.userStore.errorCode])
+  }, [store.userStore.errorCode, store.searchStore.errorCode])
 }
 
 export default useAuth

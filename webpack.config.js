@@ -96,7 +96,7 @@ module.exports = {
         use: getCssRules(false),
       },
       {
-        test: /\.(png|svg|jpg)$/,
+        test: /\.(png|svg|jpg|gif|woff|ttf|eot)$/,
         type: 'asset',
         parser: {
           dataUrlCondition: {

@@ -61,13 +61,13 @@ const MainPage: FC = () => {
             </div>
           )}
           <div
-            style={
-              history.location.pathname !== paths.PROFILE &&
-              !history.location.pathname.includes('albums') &&
-              !history.location.pathname.includes('playlists')
-                ? { background: 'rgba(0, 0, 0, 0.74)' }
-                : {}
-            }
+            // style={
+            //   history.location.pathname !== paths.PROFILE &&
+            //   !history.location.pathname.includes('albums') &&
+            //   !history.location.pathname.includes('playlists')
+            //     ? { background: 'rgba(0, 0, 0, 0.74)' }
+            //     : {}
+            // }
             className="main"
           >
             <div className={'main__layout'}>

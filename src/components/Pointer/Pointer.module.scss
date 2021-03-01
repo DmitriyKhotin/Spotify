@@ -1,0 +1,42 @@
+@import "src/styles/variables";
+@import "src/styles/mixins";
+
+.pointer {
+
+  &__arrow {
+    margin: 10px 0;
+    @include square(64px);
+    @include icon_centre;
+    background: url("./top-arrow.svg");
+    animation: pointer__arrow 2s linear infinite;
+    animation-direction: alternate;
+  }
+
+  &__arrow-top {
+    transform: rotate(0deg);
+  }
+
+  &__arrow-right {
+    transform: rotate(90deg);
+  }
+
+  &__arrow-bottom{
+    transform: rotate(180deg);
+  }
+
+  &__arrow-left{
+    transform: rotate(270deg);
+  }
+
+  &__title {
+    color: $menu-color;
+    font-size: 20px;
+    line-height: 100%;
+  }
+}
+
+@keyframes pointer__arrow {
+  0% { opacity: 1; }
+  50% { opacity: .6; }
+  100% {opacity: .2}
+}

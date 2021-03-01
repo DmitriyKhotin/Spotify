@@ -10,7 +10,7 @@ const SignInButton: FC = () => {
 
   return (
     <button className="signInButton" onClick={logIn}>
-      <p className="signInButton__title">Sign in</p>
+      <p className="signInButton__title">Войти</p>
     </button>
   )
 }

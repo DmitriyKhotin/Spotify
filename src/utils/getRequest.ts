@@ -2,17 +2,13 @@ import axios, { AxiosResponse } from 'axios'
 
 import { ApiResp } from './apiTypes'
 
-export const getRequest = async <T>(
-  url: string,
-  optionalHeaders = {}
-): Promise<ApiResp<T, null>> => {
+export const getRequest = async <T>(url: string): Promise<ApiResp<T, null>> => {
   try {
     const response: AxiosResponse = await axios({
       method: 'get',
       url: url,
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
-        ...optionalHeaders,
       },
     })
     console.log(response)

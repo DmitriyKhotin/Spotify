@@ -2,7 +2,7 @@
 @import 'src/styles/mixins';
 
 .category {
-  background: $main-background-color;
+  //background: $main-background-color;
   min-height: 100%;
   &__header {
     display: flex;
@@ -10,6 +10,10 @@
     padding-bottom: 30px;
     border-bottom: 1px solid $signature-color;
     padding-left: 60px;
+
+    & > .card {
+      margin: 0;
+    }
 
     &__title {
       display: flex;

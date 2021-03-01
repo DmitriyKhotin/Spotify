@@ -9,6 +9,7 @@
     "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src"
   },
   "dependencies": {
+    "@types/react-slick": "^0.23.4",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "eslint": "^7.20.0",
@@ -16,12 +17,18 @@
     "mobx": "^6.1.5",
     "mobx-react-lite": "^3.2.0",
     "normalize.css": "^8.0.1",
+    "pure-react-carousel": "^1.27.6",
     "react": "^17.0.1",
     "react-audio-player": "^0.14.0",
+    "react-awesome-slider": "^4.1.0",
     "react-dom": "^17.0.1",
     "react-h5-audio-player": "^3.6.1",
     "react-loader-spinner": "^4.0.0",
-    "react-router-dom": "^5.2.0"
+    "react-responsive-carousel": "^3.2.12",
+    "react-router-dom": "^5.2.0",
+    "react-slick": "^0.28.0",
+    "slick-carousel": "^1.8.1",
+    "swiper": "^6.4.15"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.16",

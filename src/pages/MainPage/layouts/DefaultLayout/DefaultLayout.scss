@@ -1,8 +1,6 @@
 @import "src/styles/variables";
 
 .defaultLayout {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: $delimiter-height + $title-height + $title-mb;
+  //height: $delimiter-height + $title-height + $title-mb;
+  width: calc(100vw - #{$sideBar-width} - 40px);
 }

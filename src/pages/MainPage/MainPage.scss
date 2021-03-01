@@ -2,11 +2,12 @@
 
 .wrapper {
   display: flex;
-  height: $wrapper-height;
+  height: calc(100% - #{$player-height});
+  background: $main-background-color;
 }
 
 .sidebar {
-  width: 245px;
+  width: $sideBar-width;
   background: $menupage-color;
   padding-top: 16px;
 
@@ -21,24 +22,23 @@
 
 .content {
   flex-grow: 1;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .header {
   display: flex;
-  align-items: center;
   padding: 23px 40px 42px;
   padding-left: 60px;
-  background: $main-background-color;
+  //background: $main-background-color;
 
   &__profile {
+    margin-top: 2px;
     margin-left: auto;
   }
 }
 
 .main {
   display: flex;
-  height: $wrapper-height - 113px;
 
   &__layout {
     flex-grow: 1;
@@ -51,7 +51,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  top: $wrapper-height;
+  height: $player-height;
   border-top: 4px solid $player-border-color;
   background: $menupage-color;
   display: flex;

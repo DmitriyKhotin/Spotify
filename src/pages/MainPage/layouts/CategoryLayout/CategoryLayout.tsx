@@ -47,7 +47,7 @@ const CategoryLayout: FC = () => {
 
   if (!category) {
     return (
-      <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.74)', height: '100%' }}>
+      <div>
         <Loader />
       </div>
     )
