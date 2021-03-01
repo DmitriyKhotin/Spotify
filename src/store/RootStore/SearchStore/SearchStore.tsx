@@ -22,7 +22,7 @@ export default class SearchStore {
     if (this.meta === Meta.loading) {
       return
     }
-    console.log(query)
+
     this.meta = Meta.loading
     this.tracks = []
 

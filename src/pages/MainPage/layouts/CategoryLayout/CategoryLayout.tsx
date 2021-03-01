@@ -24,7 +24,6 @@ const CategoryLayout: FC = () => {
 
   useEffect(() => {
     if (store.userStore.meta !== Meta.loading) {
-      console.log(history.location.pathname.includes(ALBUM_PATH))
       history.location.pathname.includes(ALBUM_PATH)
         ? store.userStore
             .fetchAlbum(history.location.pathname)
