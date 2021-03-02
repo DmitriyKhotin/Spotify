@@ -1,5 +1,4 @@
-import React, { FC, memo, useCallback, useMemo, useState } from 'react'
-import Loader from 'react-loader-spinner'
+import React, { FC, MouseEvent, useMemo } from 'react'
 import classNames from 'classnames'
 import { observer } from 'mobx-react-lite'
 
@@ -24,9 +23,8 @@ const Track: FC<IProps> = ({
   type,
   index,
 }) => {
-  const onclick = (event: MouseEvent) => {
+  const onClick = (event: MouseEvent): void => {
     event.stopPropagation()
-    console.log(store.userStore.curTrack.id === id)
     if (previewUrl) {
       store.userStore.setTrack({
         name,
@@ -49,7 +47,6 @@ const Track: FC<IProps> = ({
   const memoDuration = useMemo(() => convertMiliSecToMinSec(duration), [
     duration,
   ])
-  const onClickMemo = useCallback((event) => onclick(event), [])
 
   return (
     <div
@@ -57,7 +54,7 @@ const Track: FC<IProps> = ({
         track.track,
         store.userStore.curTrack.id === id ? track.active : ''
       )}
-      onClick={onClickMemo}
+      onClick={onClick}
     >
       <div className={track.flex}>
         <p className={track.track__number}>{index}</p>

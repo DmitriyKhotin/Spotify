@@ -2,10 +2,10 @@ import React, { FC, useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 import classNames from 'classnames'
 
+import { TrackModel } from '@store/models'
 import store from '@store/RootStore'
 import useAuth from '@utils/useAuth'
 import Track from '@components/Track'
-import { TrackModel } from '@store/models'
 import Loader from '@components/Loader'
 
 import style from './ProfileLayout.module.scss'
@@ -16,7 +16,7 @@ const ProfileLayout: FC = () => {
       store.userStore.fetchProfile(true),
       store.userStore.fetchTopTracks(true),
       store.userStore.fetchTopArtists(true),
-    ]).catch((e) => console.log(e))
+    ])
   }, [])
 
   useAuth()

@@ -1,13 +1,11 @@
-import React, { FC } from 'react'
-
-import './Carousel.scss'
-
+import React, { FC, memo } from 'react'
 import { Link } from 'react-router-dom'
 import Slider from 'react-slick'
-
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import classNames from 'classnames'
+
+import './Carousel.scss'
 
 import Title from '@components/Title'
 import Card from '@components/Card'
@@ -86,4 +84,4 @@ const Carousel: FC<{ title: string; data: BaseModelWithImage[] }> = ({
   )
 }
 
-export default Carousel
+export default memo(Carousel)

@@ -10,14 +10,14 @@ import PrivateRoute from '@components/PrivateRoute'
 import { getToken } from '@config/appData'
 import { paths } from '@config/routes'
 import Player from '@components/Player'
+import store from '@store/RootStore'
 
 import DefaultLayout from './layouts/DefaultLayout'
-import './MainPage.scss'
 import CategoryLayout from './layouts/CategoryLayout'
 import ProfileLayout from './layouts/ProfileLayout'
 import SearchLayout from './layouts/SearchLayout'
 
-import store from '../../store/RootStore'
+import './MainPage.scss'
 
 const MainPage: FC = () => {
   const history = useHistory()
@@ -60,16 +60,7 @@ const MainPage: FC = () => {
               </div>
             </div>
           )}
-          <div
-            // style={
-            //   history.location.pathname !== paths.PROFILE &&
-            //   !history.location.pathname.includes('albums') &&
-            //   !history.location.pathname.includes('playlists')
-            //     ? { background: 'rgba(0, 0, 0, 0.74)' }
-            //     : {}
-            // }
-            className="main"
-          >
+          <div className="main">
             <div className={'main__layout'}>
               <Switch>
                 <PrivateRoute exact path={paths.ROOT}>

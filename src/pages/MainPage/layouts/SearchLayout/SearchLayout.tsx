@@ -4,11 +4,10 @@ import { useLocation } from 'react-router-dom'
 
 import store from '@store/RootStore'
 import Track from '@components/Track'
-
-import { Meta } from '../../../../utils/meta'
-import Loader from '../../../../components/Loader'
-import useAuth from '../../../../utils/useAuth'
-import { paths } from '../../../../config/routes'
+import Loader from '@components/Loader'
+import { Meta } from '@utils/meta'
+import useAuth from '@utils/useAuth'
+import { paths } from '@config/routes'
 
 import style from './SearchLayout.module.scss'
 

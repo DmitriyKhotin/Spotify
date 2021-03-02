@@ -11,7 +11,7 @@ export const getRequest = async <T>(url: string): Promise<ApiResp<T, null>> => {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
       },
     })
-    console.log(response)
+
     return {
       errorCode: null,
       data: response.data,

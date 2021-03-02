@@ -1,10 +1,8 @@
 import {
   action,
   computed,
-  IReactionDisposer,
   makeAutoObservable,
   observable,
-  reaction,
   runInAction,
 } from 'mobx'
 
@@ -150,27 +148,18 @@ export default class UserStore {
   }
 
   setTopTracks(data?: Items<TrackApiModel[]>): void {
-    if (data) {
-      console.log(normalizeTracksModel(data.items))
-    }
     !data
       ? (this.topTracks = [])
       : (this.topTracks = normalizeTracksModel(data.items))
   }
 
   setTopArtists(data?: Items<ArtistApiModel[]>): void {
-    if (data) {
-      console.log(normalizeArtistsModel(data.items))
-    }
     !data
       ? (this.topArtists = [])
       : (this.topArtists = normalizeArtistsModel(data.items))
   }
 
   setProfile(data?: ProfileApiModel): void {
-    if (data) {
-      console.log(normalizeProfileModel(data))
-    }
     !data
       ? (this.profile = initialProfile)
       : (this.profile = normalizeProfileModel(data))
@@ -285,10 +274,4 @@ export default class UserStore {
 
     return filteredTracks
   }
-  metaChangedReaction: IReactionDisposer = reaction(
-    () => this.meta,
-    (value) => {
-      console.log(value)
-    }
-  )
 }

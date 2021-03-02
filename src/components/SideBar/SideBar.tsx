@@ -1,7 +1,6 @@
 import React, { FC, memo } from 'react'
 
 import './SideBar.scss'
-import Title from '@components/Title'
 
 import SideBarRow from './SideBarRow'
 import { mapSideBarLabels, sideBarLabelOrder } from './config'

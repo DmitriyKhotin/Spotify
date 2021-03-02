@@ -36,7 +36,7 @@
     "curly": ["error", "all"],
     "quotes": ["error", "single"],
     "no-alert": "error",
-    "no-console": "off",
+    "no-console": "error",
     "no-redeclare": "error",
     "no-var": "error",
     "import/order": [

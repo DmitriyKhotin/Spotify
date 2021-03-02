@@ -1,13 +1,13 @@
 import React, { FC, useEffect } from 'react'
-import './DefaultLayout.scss'
 import { observer } from 'mobx-react-lite'
-import { toJS } from 'mobx'
 
 import store from '@store/RootStore'
 import Carousel from '@components/Carousel'
-import { Meta } from '@utils/meta'
 import Loader from '@components/Loader'
+import { Meta } from '@utils/meta'
 import useAuth from '@utils/useAuth'
+
+import './DefaultLayout.scss'
 
 const DefaultLayout: FC = () => {
   useEffect(() => {
@@ -16,8 +16,6 @@ const DefaultLayout: FC = () => {
         store.userStore.fetchAlbums(true),
         store.userStore.fetchPlaylists(true),
       ])
-        .then((r) => console.log(r))
-        .catch((e) => console.log(e))
     }
   }, [])
 
@@ -26,7 +24,7 @@ const DefaultLayout: FC = () => {
   if (store.userStore.meta === Meta.loading) {
     return <Loader />
   }
-  console.log(toJS(store.userStore.albums))
+
   return (
     <div className="defaultLayout">
       <Carousel title="Мои альбомы" data={store.userStore.albums} />

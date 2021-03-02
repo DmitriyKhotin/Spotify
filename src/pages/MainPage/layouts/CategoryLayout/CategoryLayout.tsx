@@ -1,18 +1,19 @@
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
 import store from '@store/RootStore'
-import Track from '@components/Track'
 import { AlbumModel, PlaylistModel } from '@store/models'
+import Track from '@components/Track'
 import Loader from '@components/Loader'
 import Card from '@components/Card'
 import { Meta } from '@utils/meta'
 import useAuth from '@utils/useAuth'
 
-import './CategoryLayout.scss'
 import AlbumInfo from './AlbumInfo'
 import PlaylistInfo from './PlaylistInfo'
+
+import './CategoryLayout.scss'
 
 const ALBUM_PATH = '/albums'
 
@@ -28,11 +29,11 @@ const CategoryLayout: FC = () => {
         ? store.userStore
             .fetchAlbum(history.location.pathname)
             //@ts-ignore
-            .then((response) => setCategory(response))
+            .then(setCategory)
         : store.userStore
             .fetchPlaylist(history.location.pathname)
             //@ts-ignore
-            .then((response) => setCategory(response))
+            .then(setCategory)
     }
   }, [])
 
@@ -40,7 +41,7 @@ const CategoryLayout: FC = () => {
 
   useEffect(() => {
     if (category) {
-      category.color.then((hex) => store.userStore.setColor(hex))
+      category.color.then(store.userStore.setColor)
     }
   }, [category])
 

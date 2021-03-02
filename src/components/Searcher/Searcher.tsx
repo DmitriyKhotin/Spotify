@@ -2,9 +2,9 @@ import React, { ChangeEvent, FC, useEffect, useRef, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import './Searcher.scss'
-import { paths } from '../../config/routes'
-import store from '../../store/RootStore'
-import Pointer from '../Pointer/Pointer'
+import { paths } from '@config/routes'
+import store from '@store/RootStore'
+import Pointer from '@components/Pointer'
 
 const Searcher: FC = () => {
   const [value, setValue] = useState<string>('')

@@ -9,7 +9,7 @@ import { StatusCode } from './apiTypes'
 
 const useAuth = () => {
   const history = useHistory()
-  console.log(store.userStore.errorCode)
+
   useEffect(() => {
     if (
       store.userStore.errorCode === StatusCode.unauthorized ||

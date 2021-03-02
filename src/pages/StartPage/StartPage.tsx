@@ -4,9 +4,9 @@ import { useHistory } from 'react-router-dom'
 import BigLogo from '@components/BigLogo'
 import OportunityList from '@components/OportunityList'
 import SignInButton from '@components/SignInButton'
+import { paths } from '@config/routes'
 
 import './StartPage.scss'
-import { paths } from '../../config/routes'
 
 const StartPage: FC = () => {
   const history = useHistory()
@@ -14,7 +14,6 @@ const StartPage: FC = () => {
   useEffect(() => {
     if (localStorage.getItem('token')) {
       history.length > 2 ? history.goBack() : history.replace(paths.ROOT)
-      console.log(history)
     }
   }, [])
 
