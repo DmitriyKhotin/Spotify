@@ -20,12 +20,3 @@
 .margin-top {
   margin-top: 30px;
 }
-
-@include media("<tablet") {
-  .startPage {
-    &__logo {
-      padding: 32px 93px 0;
-    }
-
-  }
-}
