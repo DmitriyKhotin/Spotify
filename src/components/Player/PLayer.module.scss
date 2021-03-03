@@ -1,0 +1,18 @@
+@import "src/styles/variables";
+@import "src/styles/mixins";
+
+.player {
+  &:focus {
+    outline: none;
+  }
+
+  @include _799 {
+    height: calc(#{$player-tablet-height} - 26px);
+    width: 245px;
+  }
+
+  @include _480 {
+    height: calc(#{$player-tablet-height} - 30px);
+    width: 240px;
+  }
+}

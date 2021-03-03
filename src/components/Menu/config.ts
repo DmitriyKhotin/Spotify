@@ -4,31 +4,31 @@ import homeImg from './img/home.svg'
 import homeClickedImg from './img/home-clicked.svg'
 import searchImg from './img/loupe.svg'
 
-export enum SideBarEnum {
+export enum MenuEnum {
   main = 'Главная',
   search = 'Поиск',
 }
 
-export type SideBarLabel = {
+export type MenuLabel = {
   defaultImg: string
   clickedImg: string
-  title: SideBarEnum
+  title: MenuEnum
   link: string
 }
 
-export const mapSideBarLabels: Record<SideBarEnum, SideBarLabel> = {
-  [SideBarEnum.main]: {
+export const mapMenuLabels: Record<MenuEnum, MenuLabel> = {
+  [MenuEnum.main]: {
     defaultImg: homeImg,
     clickedImg: homeClickedImg,
-    title: SideBarEnum.main,
+    title: MenuEnum.main,
     link: paths.ROOT,
   },
-  [SideBarEnum.search]: {
+  [MenuEnum.search]: {
     defaultImg: searchImg,
     clickedImg: searchImg,
-    title: SideBarEnum.search,
+    title: MenuEnum.search,
     link: paths.SEARCH,
   },
 }
 
-export const sideBarLabelOrder = [SideBarEnum.main, SideBarEnum.search]
+export const menuLabelOrder = [MenuEnum.main, MenuEnum.search]

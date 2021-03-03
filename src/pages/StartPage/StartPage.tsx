@@ -24,7 +24,7 @@ const StartPage: FC = () => {
       </div>
       <div className="startPage__body">
         <OportunityList />
-        <div className="mt-15">
+        <div className="margin-top">
           <SignInButton />
         </div>
       </div>

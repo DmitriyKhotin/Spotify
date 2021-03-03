@@ -3,6 +3,8 @@ import { observer } from 'mobx-react-lite'
 
 import store from '@store/RootStore'
 
+import style from './PLayer.module.scss'
+
 const Player: FC = () => {
   const ref = useRef(null)
 
@@ -23,6 +25,7 @@ const Player: FC = () => {
       src={store.userStore.curTrack.previewUrl || ''}
       autoPlay
       controls
+      className={style.player}
     />
   )
 }

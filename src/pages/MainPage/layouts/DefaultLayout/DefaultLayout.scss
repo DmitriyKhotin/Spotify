@@ -1,6 +1,21 @@
 @import "src/styles/variables";
+@import "src/styles/mixins";
 
 .defaultLayout {
   //height: $delimiter-height + $title-height + $title-mb;
   width: calc(100vw - #{$sideBar-width} - 40px);
+
+  @include _1240 {
+    width: calc(100vw - 210px - 40px);
+  }
+
+  @include _979 {
+    width: calc(100vw - 190px - 40px);
+  }
+
+  @include _799 {
+    width: calc(100vw - 40px);
+  }
+
+  margin-bottom: 70px;
 }

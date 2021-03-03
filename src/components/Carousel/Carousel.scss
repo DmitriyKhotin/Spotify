@@ -1,10 +1,29 @@
+@import "src/styles/mixins";
+
 .carousel {
   padding: 0 40px;
   padding-left: 60px;
   margin-bottom: 30px;
 
+  @include _799 {
+    padding: 0;
+    padding-left: 60px;
+  }
+
+  @include _480 {
+    padding-left: 25px;
+  }
+
+  @media screen and (max-width: 390px){
+    text-align: center;
+  }
+
   &__slider {
   margin-left: 24px;
+
+  @include _799 {
+    margin-left: 0;
+  }
 
     & .slick-track {
       margin: 0;

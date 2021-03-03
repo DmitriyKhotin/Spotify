@@ -1,7 +1,7 @@
 @import "src/styles/variables";
 @import "src/styles/mixins";
 
-.sideBarRow {
+.menuItem {
   display: flex;
   align-items: center;
   margin:0 10px;
@@ -9,6 +9,14 @@
   border-radius: 5px;
   opacity: .8;
   text-decoration: none;
+
+  @include _1240 {
+    padding: 7px 20px;
+  }
+
+  @include _799 {
+    flex-direction: column;
+  }
 
   &:hover {
     cursor: pointer;
@@ -19,16 +27,26 @@
     @include icon_centre;
     @include square(24px);
     margin-right: 20px;
+
+    @include _799 {
+      margin-right: 0;
+    }
   }
 
   &__title {
     color: $sideBarRow-color;
     font-size: 19px;
     line-height: 22px;
+
+    @include _799 {
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 16px;
+    }
   }
 }
 
-.sideBarRow-active {
+.menuItem-active {
   opacity: inherit;
   background-color: #282828;
 }

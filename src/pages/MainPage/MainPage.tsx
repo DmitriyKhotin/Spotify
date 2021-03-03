@@ -2,8 +2,9 @@ import React, { FC } from 'react'
 import { useHistory, Switch, Redirect } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
+import SideBar from '@components/Menu/SideBar'
+import Footer from '@components/Menu/Footer'
 import Searcher from '@components/Searcher'
-import SideBar from '@components/SideBar'
 import ProfileBar from '@components/ProfileBar'
 import MiniLogo from '@components/MiniLogo'
 import PrivateRoute from '@components/PrivateRoute'
@@ -31,14 +32,20 @@ const MainPage: FC = () => {
   return (
     <>
       <div className={'wrapper'}>
-        <div className={'sidebar'}>
-          <div className={'sidebar__logo'}>
-            <MiniLogo />
+        {window.innerWidth >= 800 ? (
+          <div className={'sidebar'}>
+            <div className={'sidebar__logo'}>
+              <MiniLogo />
+            </div>
+            <div className={'sidebar__menu'}>
+              <SideBar />
+            </div>
           </div>
-          <div className={'sidebar__menu'}>
-            <SideBar />
+        ) : (
+          <div className={'footer'}>
+            <Footer />
           </div>
-        </div>
+        )}
         <div className={'content'}>
           {history.location.pathname !== paths.PROFILE && (
             <div

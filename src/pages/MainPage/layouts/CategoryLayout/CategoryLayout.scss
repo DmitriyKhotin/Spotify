@@ -2,8 +2,12 @@
 @import 'src/styles/mixins';
 
 .category {
-  //background: $main-background-color;
   min-height: 100%;
+
+  @include _799 {
+    margin-bottom: $footer-height;
+  }
+
   &__header {
     display: flex;
     padding: 0 40px;
@@ -11,8 +15,17 @@
     border-bottom: 1px solid $signature-color;
     padding-left: 60px;
 
+    @include _799 {
+      display: block;
+      padding: 0 40px;
+    }
+
     & > .card {
       margin: 0;
+
+      @include _799 {
+        margin: auto;
+      }
     }
 
     &__title {
@@ -28,14 +41,52 @@
 
         &_size-middle {
           @include item(32px, $menu-color);
+
+          @media screen and (max-width: 1240px) {
+            @include item(28px, $menu-color);
+          }
+
+          @media screen and (max-width: 980px) {
+            @include item(24px, $menu-color);
+          }
+
+          @include _799 {
+            display: none;
+          }
         }
 
         &_size-big {
           @include item(44px, $menu-color);
+
+          @media screen and (max-width: 1240px) {
+            @include item(38px, $menu-color);
+          }
+
+          @media screen and (max-width: 980px) {
+            @include item(34px, $menu-color);
+          }
+
+          @include _799 {
+            @include item(24px, $menu-color);
+            margin: auto;
+          }
         }
 
         &_color-white {
           @include item(20px, $menu-color);
+
+          @media screen and (max-width: 1240px) {
+            @include item(18px, $menu-color);
+          }
+
+          @media screen and (max-width: 980px) {
+            @include item(16px, $menu-color);
+          }
+
+          @include _799 {
+            display: none;
+          }
+
         }
 
         &_color-gray {
@@ -43,10 +94,26 @@
           display: flex;
           align-items: center;
 
+          @media screen and (max-width: 1240px) {
+            @include item(18px, $signature-color);
+          }
+
+          @media screen and (max-width: 980px) {
+            @include item(16px, $signature-color);
+          }
+
+          @include _799 {
+            display: none;
+          }
+
           &:before {
             @include dot(6px, $signature-color);
             content: '';
             margin: 0 8px;
+
+            @include _799 {
+              display: none;
+            }
           }
         }
       }

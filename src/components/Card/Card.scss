@@ -3,7 +3,17 @@
 .card {
   @include square(180px);
   border-radius: 50%;
-  @include square(180px);
   @include icon_centre;
-  margin: auto;
+
+  @media screen and (max-width: 1240px){
+    @include square(170px);
+  }
+
+  @media screen and (max-width: 799px){
+    @include square(150px);
+  }
+
+  @media screen and (max-width: 390px){
+    margin: auto;
+  }
 }

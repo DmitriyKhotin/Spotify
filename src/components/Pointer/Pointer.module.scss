@@ -32,6 +32,10 @@
     color: $menu-color;
     font-size: 20px;
     line-height: 100%;
+
+    @include _480 {
+      font-size: 14px;
+    }
   }
 }
 

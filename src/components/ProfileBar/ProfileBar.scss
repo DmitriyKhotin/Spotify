@@ -25,9 +25,13 @@
 
   &__name {
     font-size: 34px;
-    line-height: 40px;
+    line-height: 100%;
     color: $menu-color;
     margin-right: 10px;
+
+    @include _799 {
+      font-size: 28px;
+    }
   }
 
   &__arrow {
@@ -47,6 +51,7 @@
 
   .dropdown-list {
     position: absolute;
+    z-index: 1;
     list-style: none;
     width: 150px;
     margin-top: 10px;

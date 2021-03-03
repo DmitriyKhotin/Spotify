@@ -1,8 +1,13 @@
 @import "src/styles/variables";
+@import "src/styles/mixins";
 
 .title {
   font-size: 25px;
   line-height: $title-height;
   color: $menu-color;
   margin-bottom: $title-mb;
+
+  @include _799 {
+    font-size: 21px;
+  }
 }

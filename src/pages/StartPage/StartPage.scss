@@ -1,4 +1,5 @@
 @import '/src/styles/variables';
+@import  '~include-media/dist/_include-media.scss';
 
 .startPage {
   height: 100%;
@@ -17,6 +18,15 @@
   }
 }
 
-.mt-15 {
+.margin-top {
   margin-top: 30px;
+}
+
+@include media("<tablet") {
+  .startPage {
+    &__logo {
+      padding: 32px 93px 0;
+    }
+
+  }
 }

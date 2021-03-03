@@ -23,21 +23,32 @@ const Carousel: FC<{ title: string; data: BaseModelWithImage[] }> = ({
     speed: 500,
     dots: false,
     arrows: true,
+    centerMode: data.length > 5,
     slidesToShow: getNumber(5),
     slidesToScroll: getNumber(5),
-    centerMode: false,
     infinite: true,
+
     responsive: [
       {
         breakpoint: 1440,
         settings: {
+          centerMode: data.length > 4,
           slidesToShow: getNumber(4),
           slidesToScroll: getNumber(4),
         },
       },
       {
-        breakpoint: 1240,
+        breakpoint: 1340,
         settings: {
+          centerMode: data.length > 3,
+          slidesToShow: getNumber(3),
+          slidesToScroll: getNumber(3),
+        },
+      },
+      {
+        breakpoint: 1100,
+        settings: {
+          centerMode: data.length > 3,
           slidesToShow: getNumber(3),
           slidesToScroll: getNumber(3),
         },
@@ -45,17 +56,64 @@ const Carousel: FC<{ title: string; data: BaseModelWithImage[] }> = ({
       {
         breakpoint: 1080,
         settings: {
+          centerMode: data.length > 2,
           slidesToShow: getNumber(2),
           slidesToScroll: getNumber(2),
         },
       },
       {
-        breakpoint: 800,
+        breakpoint: 940,
         settings: {
+          centerPadding: '20px',
+          centerMode: data.length > 2,
+          slidesToShow: getNumber(2),
+          slidesToScroll: getNumber(2),
+        },
+      },
+      {
+        breakpoint: 799,
+        settings: {
+          dots: true,
+          arrows: false,
+          centerPadding: '100px',
+          centerMode: false,
+          slidesToShow: getNumber(3),
+          slidesToScroll: getNumber(3),
+        },
+      },
+      {
+        breakpoint: 670,
+        settings: {
+          dots: true,
+          arrows: false,
+          centerPadding: '50px',
+          centerMode: false,
+          slidesToShow: getNumber(2),
+          slidesToScroll: getNumber(2),
+        },
+      },
+      {
+        breakpoint: 390,
+        settings: {
+          dots: true,
+          arrows: false,
+          centerPadding: '70px',
+          centerMode: false,
           slidesToShow: getNumber(1),
           slidesToScroll: getNumber(1),
         },
       },
+      // {
+      //   breakpoint: 380,
+      //   settings: {
+      //     dots: true,
+      //     arrows: false,
+      //     centerPadding: '40px',
+      //     centerMode: true,
+      //     slidesToShow: getNumber(1),
+      //     slidesToScroll: getNumber(1),
+      //   },
+      // },
     ],
   }
 
@@ -67,9 +125,7 @@ const Carousel: FC<{ title: string; data: BaseModelWithImage[] }> = ({
           {data.map((value: BaseModelWithImage) => (
             <div
               key={value.id}
-              className={classNames('carousel__slider__hovered', {
-                carousel__card__margin_zero: data.length < 5,
-              })}
+              className={classNames('carousel__slider__hovered')}
             >
               <Link to={`${value.type}s/${value.id}`}>
                 <Card src={value.images[0].url} />

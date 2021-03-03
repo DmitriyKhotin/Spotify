@@ -10,6 +10,18 @@
   margin: 0 40px;
   margin-left: 60px;
 
+  @include _799 {
+    margin: 0 40px;
+  }
+
+  @include _600 {
+    margin: 0 20px;
+  }
+
+  @include _480 {
+    margin: 0 10px;
+  }
+
   .flex {
     display: flex;
     align-items: center;
@@ -19,13 +31,30 @@
     color: $menu-color;
     font-size: 26px;
     line-height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    width: 20px;
     margin-right: 30px;
+
+    @include _799 {
+      font-size: 22px;
+      margin-right: 20px;
+    }
   }
 
   &__title {
     color: $menu-color;
     font-size: 19px;
-    line-height: 22px;
+    line-height: 100%;
+    margin-bottom: 5px;
+
+    @include _799 {
+      font-size: 16px;
+    }
+
+    @include _600 {
+      font-size: 14px;
+    }
   }
 
   &__authors {
@@ -34,9 +63,13 @@
     .author {
       color: $signature-color;
       font-size: 14px;
-      line-height: 16px;
+      line-height: 100%;
       display: flex;
       align-items: center;
+
+      @include _600 {
+        font-size: 12px;
+      }
 
       &:after {
         @include dot(5px, $signature-color);
@@ -56,13 +89,26 @@
     .mini-dot {
       @include dot(5px, $signature-color);
       margin: 0 5px;
+
+      @include _600 {
+        @include dot(3px, $signature-color);
+        margin: 0 3px;
+      }
     }
   }
 
   &__duration {
     color: $signature-color;
     font-size: 18px;
-    line-height: 21px;
+    line-height: 100%;
+
+    @include _799 {
+      font-size: 16px;
+    }
+
+    @include _600 {
+      font-size: 14px;
+    }
   }
 
   &:hover {
@@ -76,6 +122,11 @@
       background: url("img/play-button.svg");
       @include square(24px);
       margin-right: 21px;
+
+      @include _799 {
+        background: url("img/play-button-14px.svg");
+        @include square(14px);
+      }
     }
   }
 }
