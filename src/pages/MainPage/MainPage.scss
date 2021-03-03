@@ -11,11 +11,11 @@
   }
 
   @media screen and (max-width: 799px){
-    height: calc(100% - #{$footer-height});
+    height: calc(100% - #{$player-tablet-height} - #{$footer-height});
   }
 
   @media screen and (max-width: 480px){
-    height: calc(100% - #{$footer-mobile-height});
+    height: calc(100% - #{$player-mobile-height} - #{$footer-mobile-height});
   }
 }
 

@@ -4,10 +4,6 @@
 .category {
   min-height: 100%;
 
-  @include _799 {
-    margin-bottom: $footer-height;
-  }
-
   &__header {
     display: flex;
     padding: 0 40px;
