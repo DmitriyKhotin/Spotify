@@ -7,6 +7,7 @@ import SignInButton from '@components/SignInButton'
 import { paths } from '@config/routes'
 
 import './StartPage.scss'
+import MiniLogo from '../../components/MiniLogo'
 
 const StartPage: FC = () => {
   const history = useHistory()
@@ -20,7 +21,7 @@ const StartPage: FC = () => {
   return (
     <div className="startPage">
       <div className="startPage__logo">
-        <BigLogo />
+        {window.innerWidth > 420 ? <BigLogo /> : <MiniLogo />}
       </div>
       <div className="startPage__body">
         <OportunityList />

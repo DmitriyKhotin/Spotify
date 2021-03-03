@@ -4,5 +4,13 @@
   background-image: url("img/big-logo.svg");
   height: 121px;
   width: 329px;
-  @include icon_centre;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include _799 {
+    height: 100px;
+    width: 300px;
+  }
+
 }

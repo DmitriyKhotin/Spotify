@@ -10,9 +10,27 @@
   border-radius: 32px;
   background-color: $logo-color;
 
+  @include _799 {
+    width: 300px;
+    height: 56px;
+  }
+
+  @include _480 {
+    width: 240px;
+    height: 48px;
+  }
+
   &__title {
     font-size: 28px;
-    line-height: 33px;
+    line-height: 100%;
     color: $startPageText-color;
+
+    @include _799 {
+      font-size: 24px;
+    }
+
+    @include _480 {
+      font-size: 20px;
+    }
   }
 }
