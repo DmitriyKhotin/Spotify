@@ -3,20 +3,20 @@
 
 .wrapper {
   display: flex;
-  height: calc(100% - #{$player-height});
+  height: 100%;
   background: $main-background-color;
 
-  @media screen and (max-height: 700px) and (min-width: 800px){
-    height: calc(100% - 80px);
-  }
-
-  @media screen and (max-width: 799px){
-    height: calc(100% - #{$player-tablet-height} - #{$footer-height});
-  }
-
-  @media screen and (max-width: 480px){
-    height: calc(100% - #{$player-mobile-height} - #{$footer-mobile-height});
-  }
+  //@media screen and (max-height: 700px) and (min-width: 800px){
+  //  height: calc(100% - 80px);
+  //}
+  //
+  //@media screen and (max-width: 799px){
+  //  height: calc(100% - #{$player-tablet-height} - #{$footer-height});
+  //}
+  //
+  //@media screen and (max-width: 480px){
+  //  height: calc(100% - #{$player-mobile-height} - #{$footer-mobile-height});
+  //}
 }
 
 .sidebar {

@@ -1,9 +1,14 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import classNames from 'classnames'
 
 import './ProfileBar.scss'
+import { observer } from 'mobx-react-lite'
+
 import { paths } from '@config/routes'
+
+import store from '../../store/RootStore'
+import { Meta } from '../../utils/meta'
 
 const ProfileBar: FC = () => {
   const [active, setActive] = useState(false)
@@ -21,6 +26,11 @@ const ProfileBar: FC = () => {
   const setActiveFalsy = () => setActive(false)
   const setActiveInvert = () => setActive((prevState) => !prevState)
 
+  useEffect(() => {
+    if (store.userStore.meta !== Meta.loading) {
+      store.userStore.fetchProfile(true)
+    }
+  }, [])
   return (
     <div className="profileBar" onBlur={setActiveFalsy}>
       <div
@@ -29,7 +39,7 @@ const ProfileBar: FC = () => {
         })}
         onClick={setActiveInvert}
       >
-        <p className="profileBar__name">Dmitriy</p>
+        <p className="profileBar__name">{store.userStore.profile.name}</p>
         <p
           className={classNames(
             'profileBar__arrow',
@@ -51,4 +61,4 @@ const ProfileBar: FC = () => {
   )
 }
 
-export default ProfileBar
+export default observer(ProfileBar)

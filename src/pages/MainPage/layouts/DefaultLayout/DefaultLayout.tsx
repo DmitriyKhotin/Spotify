@@ -11,12 +11,10 @@ import './DefaultLayout.scss'
 
 const DefaultLayout: FC = () => {
   useEffect(() => {
-    if (store.userStore.meta !== Meta.loading) {
-      Promise.all([
-        store.userStore.fetchAlbums(true),
-        store.userStore.fetchPlaylists(true),
-      ])
-    }
+    Promise.all([
+      store.userStore.fetchAlbums(true),
+      store.userStore.fetchPlaylists(true),
+    ])
   }, [])
 
   useAuth()

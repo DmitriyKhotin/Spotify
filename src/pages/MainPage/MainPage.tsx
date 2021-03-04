@@ -62,9 +62,13 @@ const MainPage: FC = () => {
               <PrivateRoute path={paths.SEARCH}>
                 <Searcher />
               </PrivateRoute>
-              <div className={'header__profile'}>
-                <ProfileBar />
-              </div>
+              {innerWidth > 480 ||
+                (!history.location.pathname.includes('albums') &&
+                  !history.location.pathname.includes('playlists') && (
+                    <div className={'header__profile'}>
+                      <ProfileBar />
+                    </div>
+                  ))}
             </div>
           )}
           <div className="main">
