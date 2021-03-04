@@ -1,14 +1,13 @@
 import React, { FC, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import classNames from 'classnames'
-
-import './ProfileBar.scss'
 import { observer } from 'mobx-react-lite'
 
 import { paths } from '@config/routes'
+import store from '@store/RootStore'
+import { Meta } from '@utils/meta'
 
-import store from '../../store/RootStore'
-import { Meta } from '../../utils/meta'
+import './ProfileBar.scss'
 
 const ProfileBar: FC = () => {
   const [active, setActive] = useState(false)

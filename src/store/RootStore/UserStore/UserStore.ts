@@ -210,10 +210,6 @@ export default class UserStore {
   }
 
   async fetchAlbum(path: string): Promise<AlbumModel | void> {
-    if (this.meta === Meta.loading) {
-      return
-    }
-
     this.meta = Meta.loading
 
     const { errorCode, data } = await getRequest<AlbumApiModel>(
@@ -235,10 +231,6 @@ export default class UserStore {
   }
 
   async fetchPlaylist(path: string): Promise<PlaylistModel | void> {
-    if (this.meta === Meta.loading) {
-      return
-    }
-
     this.meta = Meta.loading
 
     const { errorCode, data } = await getRequest<PlaylistApiModel>(

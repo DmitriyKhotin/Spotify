@@ -7,7 +7,6 @@ import { AlbumModel, PlaylistModel } from '@store/models'
 import Track from '@components/Track'
 import Loader from '@components/Loader'
 import Card from '@components/Card'
-import { Meta } from '@utils/meta'
 import useAuth from '@utils/useAuth'
 
 import AlbumInfo from './AlbumInfo'
@@ -24,17 +23,15 @@ const CategoryLayout: FC = () => {
     : useState<PlaylistModel>()
 
   useEffect(() => {
-    if (store.userStore.meta !== Meta.loading) {
-      history.location.pathname.includes(ALBUM_PATH)
-        ? store.userStore
-            .fetchAlbum(history.location.pathname)
-            //@ts-ignore
-            .then(setCategory)
-        : store.userStore
-            .fetchPlaylist(history.location.pathname)
-            //@ts-ignore
-            .then(setCategory)
-    }
+    history.location.pathname.includes(ALBUM_PATH)
+      ? store.userStore
+          .fetchAlbum(history.location.pathname)
+          //@ts-ignore
+          .then(setCategory)
+      : store.userStore
+          .fetchPlaylist(history.location.pathname)
+          //@ts-ignore
+          .then(setCategory)
   }, [])
 
   useAuth()

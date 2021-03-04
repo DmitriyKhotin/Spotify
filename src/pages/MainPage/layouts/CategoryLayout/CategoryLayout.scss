@@ -118,6 +118,15 @@
 
   &__track-wrapper {
     margin-top: 20px;
+    margin-bottom: 110px;
+
+    @include _799 {
+      margin-bottom: $player-tablet-height + $footer-height;
+    }
+
+    @include _480 {
+      margin-bottom: $player-mobile-height + $footer-mobile-height;
+    }
   }
 
   &__player {
